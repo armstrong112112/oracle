@@ -92,24 +92,47 @@
 | `useBillsStore` | fetchBills() | ✅ | Есть, через useApiClient |
 | `useStoriesStore` | ID с сервера | ✅ | POST на API, ID из ответа |
 
-### Мёртвый код: 5 «сторов-двойников» написаны, но не подключены к UI ❌ (обнаружено при повторной проверке)
-Помимо старых сторов на хардкоде, рефакторинг создал **новый набор интеграционных сторов**, полностью готовых (с `useApiClient`, fetch-методами, DTO и mock-роутами), но **не используемых ни в одной странице/виджете/entity** (проверено grep по `pages/widgets/entities/features/components`):
+### Полная карта связности «стор → роут → DTO → mock → UI» (сплошная проверка всех доменов)
+Проверены все 28 сторов, все 26 server-роутов и их использование в UI (grep по `pages/widgets/entities/features/components/layouts/composables`). Домены делятся на 5 категорий:
 
-| Стор | Роут / DTO | Используется в UI? |
+**A. Полностью замкнуты и работают в mock-режиме ✅**
+| Домен | Цепочка | UI-использований |
 |---|---|---|
-| `store/escrowApi` | `escrow.get/post` + DTO | ❌ 0 импортов |
-| `store/offers` | `offers.get/post` + DTO | ❌ 0 импортов |
-| `store/listings` | `listings.get/post` + DTO | ❌ 0 импортов |
-| `store/disputes` | `disputes.get/post` + DTO | ❌ 0 импортов |
-| `store/payment` | `payment.get/post` + DTO | ❌ 0 импортов |
+| `bills` | store→`useApiClient`→`bills.get`→DTO→mock | 5 |
+| `checks` | page→`useApiClient`→`checks.get`→DTO→mock | (page) |
+| `stories` | store→`useApiClient`→`stories.*`→DTO→mock | 6 |
+| `cart` | store→`shop/products/[id]`→DTO→mock | 4 (частично) |
 
-Это означает: интеграционная логика для escrow/offers/listings/disputes/payment **уже написана и типизирована**, но UI-компоненты продолжают жить на статике и к этим сторам не подключены. Хорошая новость — «последняя миля» (заменить импорт статики на вызов готового стора) короче, чем казалось. Плохая — сейчас это чистый мёртвый код, дублирующий старые сторы (`store/escrow` статичный vs `store/escrowApi` рабочий; `store/shops/listing` статичный vs `store/listings` рабочий).
+**B. Подключены к UI, но роут отсутствует → 404 в mock ❌ (блокеры)**
+| Домен | Вызывает endpoint | Роут есть? |
+|---|---|---|
+| `auth` (8 UI-файлов) | `/auth/login`, `/register`, `/logout`, `/refresh`, `/loginwithtg`, `/regwithtg`, `/confirmTgLogin` | ❌ нет ни одного |
+| `profile` (2 UI-файла) | `/user/my-profile`, `/user/profile/:id` | ❌ нет |
+| `dashboard` (page) | `/dashboard/summary` | ❌ нет |
+| whitelist (3 page) | `/user/list`, `/my-profile`, `/user/profile/:id` | ❌ нет |
 
-**Единственный полностью замкнутый домен — `checks`:** `store`(нет, напрямую в странице) → `pages/checks` вызывает `useApiClient` → `checks.get` роут → DTO → mock. Работает end-to-end. `store/profile` тоже подключён (`pages/oracle/my-profile/_id`, `user-profile/_id` вызывают `fetchProfile`), но бьёт в отсутствующий `/user/profile/:id`.
+**C. «Half-wired»: стор подключён к UI, но fetch-методы не вызываются ⚠️ (новая находка)**
+`store/p2p/createStore` используется в 4 UI-файлах (`P2PListingCreate`, `P2PListingCreateStepTwo`, `create.vue`, `P2PListing`) — но только через геттеры (`getReceiveCrypto`, `getFiatData`, `getPaymentTypes`…). Методы `fetchAll/fetchCoins/fetchFiat/fetchPaymentMethods/fetchDeadlines` **не вызываются нигде**, данные `.coins/.fiat` не читаются. Итог: UI читает геттеры, но стор **никогда не наполняется из API** — отдаёт статические дефолты. Роуты `p2p/coins|fiat|payment-methods|deadlines` существуют, но не вызываются. Рефакторинг дописал fetch, но не подключил его к жизненному циклу компонентов.
+
+**D. Мёртвые «сторы-двойники»: написаны полностью (store+route+DTO+mock), 0 импортов в UI ❌**
+| Стор | Роут | Статический двойник, живущий в UI |
+|---|---|---|
+| `store/escrowApi` | `escrow.get/post` | `store/escrow` (статичный) + `entities/escrow/.../DealList` |
+| `store/listings` | `listings.get/post` | `store/shops/listing` (статичный) |
+| `store/offers` | `offers.get/post` | `widgets/p2p/P2PList` (`LIST_ITEMS`) |
+| `store/disputes` | `disputes.get/post` | `store/shops/dispute` (статичный) |
+| `store/payment` | `payment.get/post` | экраны оплаты на статике |
+
+Интеграционная логика уже написана и типизирована, но UI к ней не подключён — «последняя миля» короче, чем казалось, но сейчас это чистый мёртвый код + дублирование источников данных.
+
+**E. Полностью статические сторы (API нет вообще):** `dashboard`, `escrow`, `shops`, `shops/listing`, `shops/listing/_id`, `shops/order`, `shops/dispute`, `shops/shop-settings`, `shops/listing/listing-manage`, `mixing`, `prepaid-cards`, `verification`, `blackList`, `oracle-profile`, `accessors`.
+
+**Итог карты:** из 28 сторов реально работают end-to-end 3–4 (A), 3 подключены но сломаны отсутствием роутов (B), 1 half-wired (C), 5 готовы но не подключены (D), ~15 полностью статичны (E). «Сироты-роуты» без единого вызова: `escrow`, `listings`, `offers`, `disputes`, `payment`.
 
 **Что сделать:**
-- [ ] Подключить готовые сторы к UI и удалить их статических двойников: `escrowApi`→`entities/escrow/ui/DealList`, `listings`→каталог Shops, `offers`→`widgets/p2p/P2PList`, `disputes`/`payment`→соответствующие экраны.
-- [ ] После подключения удалить дублирующие статичные сторы (`store/escrow`, `store/shops/listing`) во избежание расхождения источников данных.
+- [ ] Создать недостающие mock-роуты группы B (auth/user/dashboard/whitelist) — без них DoD #1, #2 непроверяемы.
+- [ ] Вызвать fetch-методы `p2p/createStore` в `onMounted`/`callOnce` соответствующих виджетов (группа C).
+- [ ] Подключить готовые сторы группы D к UI, заменив статические двойники группы E; удалить дубли (`store/escrow`, `store/shops/listing`, `store/shops/dispute`) во избежание расхождения источников.
 
 ### Критические пробелы в mock-роутах ❌
 Сторы и страницы обращаются к endpoints, которых нет в `server/api/v1/` — при дефолтно�� `NUXT_PUBLIC_USE_MOCKS=true` эти запросы получают 404:
@@ -241,7 +264,7 @@ Composition API, `fetchBills()` через `useApiClient()('/bills')`, loading/e
 | # | Критерий | Статус | Комментарий |
 |---|---|---|---|
 | 1 | API Client: login → cookie → Authorization | ⚠️ | Код корректен, но в mock-режиме непроверяем: нет роута `/auth/login` |
-| 2 | Refresh Token цепочка | ⚠️ | В сторах — реализована; на страницах (`useApiFetch`) повтора запроса нет; в mock-режиме нет роута `/auth/refresh` |
+| 2 | Refresh Token цепочка | ⚠️ | В сторах — реализован��; на страницах (`useApiFetch`) повтора запроса нет; в mock-режиме нет роута `/auth/refresh` |
 | 3 | Nitro моки / proxy | ⚠️ | Механизм работает; покрытие endpoints неполное (auth, user, dashboard отсутствуют) |
 | 4 | SSR не падает (localStorage) | ✅ | Все обращения защищены guard/обёртками |
 | 5 | Route Guards | ✅ | auth + guest работают; JWT-структура валидируется |
@@ -293,7 +316,7 @@ Composition API, `fetchBills()` через `useApiClient()('/bills')`, loading/e
 - `pages/p2p/orders/index.vue` — тонкая обёртка, только layout + подключение `<P2PList>`.
 - `widgets/p2p/P2PList/index.vue`:
   - данные захардкожены прямо в компоненте — массив `LIST_ITEMS` (~100 строк) внутри `.vue`; нет `useApiFetch`, нет обращения к стору;
-  - fetch-методы `useP2PCreateStore` (`fetchCoins/fetchAll`), написанные рефакторингом, здесь **не вызываются** — подтверждён «мёртвый код» из Этапа 3;
+  - fetch-методы `useP2PCreateStore` (`fetchCoins/fetchAll`), написанные рефакторингом, здесь **не вызываются** — подтве��ждён «мёртвый код» из Этапа 3;
   - нет Loading/Error/Empty — при пустом списке рендерится пустой контейнер, без `EmptyState`;
   - `handleAccept` меняет статус только локально в `ref` — мутация не уходит на сервер;
   - типы `ListItem`/`OrderStatus` объявлены в самом виджете, а не в `shared/types/api/` (дублирование DTO-паттерна).
@@ -348,7 +371,7 @@ Composition API, `fetchBills()` через `useApiClient()('/bills')`, loading/e
 **Что сделать:**
 - [ ] В карточке товара и других экранах shops/p2p/escrow заменить захардкоженные ассеты и статические массивы на поля из стора/DTO (`currentProduct.images`, `.price`, `.description` и т.д.).
 - [ ] Ввести фолбэк-заглушку только для реально отсутствующих полей (placeholder), а не как основной источник.
-- [ ] Проверить, что после подключения API ни один пользовательский экран не рендерит статические данные там, где есть эквивалент в ответе.
+- [ ] Проверить, что после подключения API ни один пользоват��льский экран не рендерит статические данные там, где есть эквивалент в ответе.
 
 ### TD-3. Скелеты загрузки: хороший компонент, но неполное покрытие и дубликат
 Скелеты загрузки в проекте **есть**. Базовый компонент `components/ui/SkeletonLoader.vue` сделан качественно: настраиваемые пропсы `width`/`height`/`borderRadius`, настоящий shimmer-эффект (движущийся градиент через `::after` + `@keyframes shimmer`), темизация под тёмный фон приложения.
