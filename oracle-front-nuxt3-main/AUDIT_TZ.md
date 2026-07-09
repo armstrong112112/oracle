@@ -77,7 +77,7 @@
 | `useEscrowStore` | fetchEscrowProfile() | ❌ | Профиль статичный, fetch-метода нет (роут `escrow.get.ts` создан, но стором не используется) |
 | `useShopsStore` | убрать SettingMockUser, fetchProfile() через API | ❌ | `SettingMockUser()` + `MockDefaultUser` на месте (переведён лишь на clientStorage-обёртки); fetchProfile() нет |
 | `useShopListingsStore` | fetchListings() | ❌ | Стор остался на **Options API**, товары из хардкода `ProductsData`; fetchListings() нет (роут `listings.get.ts` существует, не подключён) |
-| `useCartStore` | то��ар из API, не из ProductsData | ✅ | `ADD_TO_CART` запрашивает `/shop/products/:id`, проверяет наличие |
+| `useCartStore` | то����ар из API, не из ProductsData | ✅ | `ADD_TO_CART` запрашивает `/shop/products/:id`, проверяет наличие |
 | `useBillsStore` | fetchBills() | ✅ | Есть, через useApiClient |
 | `useStoriesStore` | ID с сервера | ✅ | POST на API, ID из ответа |
 
@@ -247,7 +247,7 @@ Composition API, `fetchBills()` через `useApiClient()('/bills')`, loading/e
 ### P2 — качество/консистентность
 13. [ ] Заменить прямые `localStorage`-вызовы в 3 файлах на `utils/clientStorage.ts`.
 14. [ ] Сверить DTO/санитайзеры с финальной конвенцией бэкенда (snake_case/camelCase, Timestamp, enum, int64-как-string).
-15. [ ] Ручная проверка DoD #9 (один запрос в Network, без hydration mismatch) после выполнени�� P0–P1.
+15. [ ] Ручная проверка DoD #9 (один запрос в Network, без hydration mismatch) после выполне��и�� P0–P1.
 
 ---
 
@@ -278,6 +278,18 @@ Composition API, `fetchBills()` через `useApiClient()('/bills')`, loading/e
 - [ ] В карточке товара и других экранах shops/p2p/escrow заменить захардкоженные ассеты и статические массивы на поля из стора/DTO (`currentProduct.images`, `.price`, `.description` и т.д.).
 - [ ] Ввести фолбэк-заглушку только для реально отсутствующих полей (placeholder), а не как основной источник.
 - [ ] Проверить, что после подключения API ни один пользовательский экран не рендерит статические данные там, где есть эквивалент в ответе.
+
+### TD-3. Скелеты загрузки: хороший компонент, но неполное покрытие и дубликат
+Скелеты загрузки в проекте **есть**. Базовый компонент `components/ui/SkeletonLoader.vue` сделан качественно: настраиваемые пропсы `width`/`height`/`borderRadius`, настоящий shimmer-эффект (движущийся градиент через `::after` + `@keyframes shimmer`), темизация под тёмный фон приложения.
+
+Проблемы:
+- **Неполное покрытие (P1).** Полноценный `<SkeletonLoader>` применён только на 5 мигрированных экранах (`dashboard`, `bills`, `whitelist/*`) + `entities/notification/NotificationCard`. Обязательные по ТЗ P2P, Shops, Escrow, Profile скелетов не имеют — там либо старый спиннер (`components/ui/Loader.vue`), либо ничего. Покрытие совпадает с недопокрытием ErrorState/EmptyState (см. Этап 7).
+- **Дубликат реализации (техдолг).** В виджетах `achievements/*` и `statistics/*` скелет сделан отдельно — локальными CSS-классами `.skeleton-block` + собственный `@keyframes skeleton-loading`, без общего компонента. В проекте существуют два независимых механизма скелетонов с продублированной анимацией.
+
+**Что сделать:**
+- [ ] Внедрить `<SkeletonLoader>` в loading-состояния P2P, Shops, Escrow, Profile (вместе с ErrorState/EmptyState из Этапа 7).
+- [ ] Заменить кустарные `.skeleton-block` в `achievements/*` и `statistics/*` на общий `SkeletonLoader`, удалить дублирующие `@keyframes skeleton-loading`.
+- [ ] Заменить оставшиеся спиннеры (`Loader.vue`) на скелеты там, где известна форма контента (списки, карточки), — скелет точнее передаёт ожидаемый layout.
 
 ---
 
