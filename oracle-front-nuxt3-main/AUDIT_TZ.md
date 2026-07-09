@@ -150,6 +150,12 @@
 - [ ] `useShopListingsStore`: переписать на Composition API, добавить `fetchListings()` на существующий роут `/listings`.
 - [ ] Подключить методы `useP2PCreateStore` к UI: вызвать `fetchAll()` со страницы создания оффера (через `callOnce()` + `useAsyncData`, как требует Этап 4), убрать импорт `entities/p2p/data` из `widgets/p2p/P2PHome`.
 
+### Доп. находки по серверному слою (сплошная проверка 26 роутов)
+- **Два несогласованных паттерна mock/proxy.** 10 роутов используют хелпер `withMockOrProxy` (escrow, listings, offers, disputes, payment), а 16 — ручной инлайн `if (!config.public.useMocks) return proxyToBackend(...)` (bills, checks, p2p/*, stories/*, shop/products). Оба варианта функциональны и проксирование не сломано, но это дублирование логики и разнобой стиля. **Рекомендация:** свести все 26 роутов к единому `withMockOrProxy`.
+- **DTO/санитайзеры написаны с опережением роутов и моков.** Санитайзеров 18 (включая `auth`, `user`, `balance`, `notifications`, `reviews`, `transaction-history`, `exchange`), а mock-файлов только 10 и роутов 26. Для `auth`/`user`/`balance`/`notifications`/`reviews`/`transaction-history` есть типы, но нет ни роута, ни мока — то же явление «написано, но не подключено», что и со сторами-двойниками. Это подтверждает системный паттерн рефакторинга: слои готовились снизу вверх, но не состыкованы.
+- **Санитайзеры применяются на клиенте, не на сервере (0 ссылок в `server/api`).** Это корректно (нормализация ответа gateway при чтении в сторах), просто фиксируем как факт архитектуры.
+- **Ложные тревоги (перепроверено, НЕ дефекты):** `$fetch` в `widgets/auth/AuthTg` идёт на внешний `restcountries.com` (справочник стран) — это легитимный внешний вызов, не обход внутреннего клиента. «`/api/`» в `pages/checks` — это путь импорта типа `~/shared/types/api/checks`, а не хардкод URL.
+
 ---
 
 ## Этап 4. Стандартизация загрузки данных (useApiFetch на страницах)
@@ -412,7 +418,7 @@ Composition API, `fetchBills()` через `useApiClient()('/bills')`, loading/e
 **Что сделать:**
 - [ ] Добавить Vitest + @vue/test-utils; первыми покрыть критичные модули: `utils/apiInterceptors.ts` (401/refresh/retry), `shared/types/api/sanitizers/*`, `store/shops/cart` (валидация цен), `helpers.ts` (локализация дат).
 - [ ] Добавить минимальный e2e-смоук (Playwright): логин → dashboard → добавление в корзину → checkout-валидация.
-- [ ] Подключить прогон тестов в CI.
+- [ ] Подключить прогон ��естов в CI.
 
 ---
 
