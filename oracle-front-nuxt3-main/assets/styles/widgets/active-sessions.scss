@@ -1,0 +1,87 @@
+.active-session__list {
+  background: #121119;
+  border-radius: 12px;
+  overflow: hidden;
+  .list-item {
+    .accordion-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 16px;
+      border-bottom: 1px solid #1d1c24;
+      cursor: pointer;
+      .arrown-icon {
+        transition: 0.2s;
+      }
+      &.show {
+        .arrown-icon {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+    .terminal-session {
+      height: 0;
+      overflow: hidden;
+      transition: 0.2s;
+      &.show {
+        height: 53px;
+      }
+      &-in {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 16px;
+        .current-session {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.6);
+        }
+        .terminate-access {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 14px;
+          color: #f64e2a;
+        }
+      }
+    }
+
+    &.terminate-all-sessions {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 18px 16px;
+      .terminate-all-sessions__btn {
+        width: 100%;
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 14px;
+        text-align: center;
+        line-height: 17px;
+        color: #f64e2a;
+      }
+    }
+    &:last-child {
+      border: none;
+    }
+    .left-block {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      .session-title {
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 14px;
+        color: #fff;
+      }
+    }
+    .arrown-icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}

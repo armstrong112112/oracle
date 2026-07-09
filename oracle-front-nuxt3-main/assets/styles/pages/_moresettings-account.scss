@@ -1,0 +1,47 @@
+.account-settings {
+  .block-title {
+    margin-bottom: 24px;
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .change-password {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1e1d26;
+    border-radius: 6px;
+    padding: 16px 12px;
+    margin-bottom: 35px;
+    .left-content {
+      .label {
+        margin-bottom: 10px;
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 10px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .password-input {
+        height: 10px;
+        display: block;
+        background: transparent;
+        border: 0;
+        outline: none;
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 10px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+    }
+    .change-link {
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 14px;
+      color: #f64e2a;
+    }
+  }
+}

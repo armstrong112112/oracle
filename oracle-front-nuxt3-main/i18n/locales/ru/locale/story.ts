@@ -1,0 +1,43 @@
+export default {
+  creation: {
+    title: 'Создать историю',
+    uploadImage: 'Загрузить изображение',
+    next: 'Далее',
+  },
+  textEditor: {
+    cancel: 'Отмена',
+    done: 'Опубликовать',
+    placeholder: 'Название подсветки',
+    top: 'Верх',
+    center: 'Центр',
+    bottom: 'Низ',
+    newHighlight: 'Новое избранное',
+    addToExisting: 'Добавить к существующему',
+    highlightNamePlaceholder: 'Название избранного',
+    textPlaceholder: 'Текст',
+    next: 'Далее',
+  },
+  crop: {
+    cancel: 'Отмена',
+    apply: 'Применить',
+    free: 'Свободно',
+  },
+  posting: {
+    makeHighlight: 'Сделать избранным?',
+    highlight: 'Избранное',
+    newHighlight: 'Новое избранное',
+    addToExisting: 'Добавить к существующему',
+    highlightNamePlaceholder: 'Название избранного',
+    close: 'Закрыть',
+    postStory: 'Опубликовать историю',
+  },
+  settings: {
+    makeHighlight: 'Сделать избранным?',
+    highlight: 'Избранное',
+    newHighlight: 'Новое избранное',
+    addToExisting: 'Добавить к существующему',
+    highlightNamePlaceholder: 'Название избранного',
+    delete: 'Удалить',
+    saveChanges: 'Сохранить изменения',
+  },
+}

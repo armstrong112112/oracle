@@ -1,0 +1,445 @@
+.text-editor-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  overflow: hidden;
+  contain: layout; // Prevent layout shifts
+}
+
+.media-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-left-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 20;
+}
+
+.text-right-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+}
+
+.text-overlay {
+  position: absolute;
+  font-weight: 600;
+  cursor: move;
+  user-select: none;
+  max-width: 80%;
+  text-align: center;
+  word-wrap: break-word;
+  z-index: 10;
+  pointer-events: auto;
+  border-radius: 4px;
+  transition: none; // Prevent any transitions during drag
+  will-change: transform; // Optimize for smooth dragging
+  overflow: hidden; // Prevent text from affecting layout
+  white-space: nowrap; // Keep text on single line
+  text-overflow: ellipsis; // Show ... when text is too long
+  padding-right: 20px;
+  &.selected {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+  }
+
+  &:hover:not(.selected) {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  // Drag feedback
+  &:active {
+    cursor: grabbing;
+  }
+
+  // Always show resize handle
+  &:hover .resize-handle {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.overlay-input-container {
+  position: absolute;
+  z-index: 15;
+  pointer-events: auto;
+  max-width: 80vw;
+  height: auto;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  cursor: text;
+  min-width: 100px;
+  max-width: 80vw;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fullscreen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  cursor: crosshair;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #f64e2a;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: se-resize;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+  touch-action: none; // Prevent touch scrolling during resize
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.3);
+    box-shadow: 0 4px 12px rgba(246, 78, 42, 0.4);
+  }
+
+  &:active {
+    transform: scale(1.2);
+    background: #e55a2b;
+    box-shadow: 0 5px 15px rgba(246, 78, 42, 0.5);
+  }
+}
+
+.resize-handle-bottom-right {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}
+
+.delete-handle {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  background: #f64e2a;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 25;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    transform: scale(1.2);
+    background: #e55a2b;
+    box-shadow: 0 4px 12px rgba(246, 78, 42, 0.4);
+  }
+
+  img {
+    width: 10px;
+    height: 10px;
+    filter: brightness(0) invert(1);
+  }
+}
+
+.add-text-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.hint-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: white;
+    transform: scale(1.05);
+  }
+}
+
+.add-text-section {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.add-text-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.toggle-panel-btn {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+.control-panel {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(0, 0, 0, 0.4) 70%,
+    transparent 100%
+  );
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  padding: 20px 16px 16px;
+  z-index: 15;
+  transition: transform 0.3s ease;
+  max-height: 50vh;
+  overflow-y: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+
+  &.hidden {
+    transform: translateX(-50%) translateY(100%);
+  }
+
+  // Keyboard open adjustments
+  &.keyboard-open {
+    max-height: 40vh;
+    padding: 16px 16px 8px;
+  }
+}
+
+.text-input-section {
+  margin-bottom: 24px;
+
+  // Keyboard open adjustments
+  .keyboard-open & {
+    margin-bottom: 16px;
+  }
+}
+
+.text-styling-options {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  // Keyboard open adjustments
+  .keyboard-open & {
+    margin-top: 12px;
+    gap: 12px;
+  }
+}
+
+.color-options {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.color-option {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.color-option.active {
+  border-color: #f64e2a;
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px rgba(246, 78, 42, 0.3);
+}
+
+.font-options {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.font-option {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+}
+
+.font-option.active {
+  background: #f64e2a;
+  border-color: #f64e2a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(246, 78, 42, 0.3);
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+// Mobile optimizations
+@media (max-width: 480px) {
+  .color-option {
+    width: 28px;
+    height: 28px;
+  }
+
+  .font-option {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .toggle-panel-btn {
+    width: 40px;
+    height: 40px;
+    top: 60px;
+    right: 16px;
+  }
+
+  .control-panel {
+    padding: 16px 12px 12px;
+
+    &.keyboard-open {
+      padding: 12px 12px 8px;
+      max-height: 35vh;
+    }
+  }
+
+  .text-styling-options {
+    gap: 12px;
+
+    .keyboard-open & {
+      gap: 8px;
+    }
+  }
+}
+
+// Very small screens
+@media (max-width: 360px) {
+  .control-panel {
+    &.keyboard-open {
+      max-height: 30vh;
+    }
+  }
+
+  .color-option {
+    width: 24px;
+    height: 24px;
+  }
+
+  .font-option {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+}

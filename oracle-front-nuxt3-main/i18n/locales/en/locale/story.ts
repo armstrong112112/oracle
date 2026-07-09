@@ -1,0 +1,43 @@
+export default {
+  creation: {
+    title: 'Create Story',
+    uploadImage: 'Upload Image',
+    next: 'Next',
+  },
+  textEditor: {
+    cancel: 'Cancel',
+    done: 'Post Story',
+    placeholder: 'Name of highlight',
+    top: 'Top',
+    center: 'Center',
+    bottom: 'Bottom',
+    newHighlight: 'New Highlight',
+    addToExisting: 'Add to existing',
+    highlightNamePlaceholder: 'Name of highlight',
+    textPlaceholder: 'Text',
+    next: 'Next',
+  },
+  crop: {
+    cancel: 'Cancel',
+    apply: 'Apply',
+    free: 'Free',
+  },
+  posting: {
+    makeHighlight: 'Make as highlight?',
+    highlight: 'Highlight',
+    newHighlight: 'New Highlight',
+    addToExisting: 'Add to existing',
+    highlightNamePlaceholder: 'Name of highlight',
+    close: 'Close',
+    postStory: 'Post Story',
+  },
+  settings: {
+    makeHighlight: 'Make as highlight?',
+    highlight: 'Highlight',
+    newHighlight: 'New Highlight',
+    addToExisting: 'Add to existing',
+    highlightNamePlaceholder: 'Name of highlight',
+    delete: 'Delete',
+    saveChanges: 'Save Changes',
+  },
+}

@@ -1,0 +1,262 @@
+.internal-transfer__step-two {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  .internal-transfer__content {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+
+    .internal-transfer__converter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+      .coin-converter {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: #13121b;
+        border-radius: 8px;
+        padding: 8px 16px 16px 16px;
+        @media (min-width: 1024px) {
+          background: #1B1A24;
+        }
+        .input-coin {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 8px;
+          .form-control {
+            .form-input {
+              width: 100%;
+              height: 40px;
+              background: transparent;
+              padding: 0 20px 0 0;
+              border: none;
+              font-family: 'Hector', sans-serif;
+              font-weight: 400;
+              font-size: 32px;
+              line-height: 125%;
+              color: #fff;
+              &:focus {
+                outline: none;
+              }
+              &::placeholder {
+                font-family: 'Hector', sans-serif;
+                font-weight: 400;
+                font-size: 32px;
+                line-height: 125%;
+                color: #7a74ba;
+              }
+            }
+          }
+          .coin-name {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 130%;
+            color: #67639a;
+          }
+        }
+        .coin-converter__to-usd {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 2px;
+          .to-usd__value {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 120%;
+            color: rgba(131, 131, 175, 0.8);
+            span {
+              font-size: 12px;
+            }
+          }
+          .form-control {
+            width: 100%;
+            position: relative;
+            .form-input {
+              width: 100%;
+              height: 40px;
+              position: relative;
+              z-index: 2;
+              background: transparent;
+              padding: 0 20px 0 0;
+              border: none;
+              font-family: 'Roboto', sans-serif;
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 120%;
+              color: #fff;
+              &:focus {
+                outline: none;
+              }
+              &::placeholder {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 12px;
+                text-transform: capitalize;
+                line-height: 120%;
+                color: #7a74ba;
+              }
+            }
+            .input-placeholder {
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              font-family: 'Roboto', sans-serif;
+              font-weight: 500;
+              font-size: 12px;
+              line-height: 120%;
+              color: rgba(131, 131, 175, 0.8);
+              span {
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+      .coin-converter__input {
+        position: relative;
+        z-index: 5;
+      }
+      .coin-converter__output {
+        .coin-select {
+          .select-btn {
+            .left-block {
+              .coin-info-head {
+                display: block;
+                .coin-name {
+                  font-weight: 400;
+                  font-size: 14px;
+                  line-height: 120%;
+                }
+              }
+            }
+          }
+        }
+      }
+      .coin-convert__icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.2s;
+        &.active {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+  .coins-list {
+    .list-item {
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      border-bottom: 1px solid #28283a;
+      &:last-child {
+        border: 0;
+      }
+      &__label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px;
+        .form-input {
+          display: none;
+          &:checked + .checkbox-button {
+            background: #f64e2a;
+            border-color: #f64e2a;
+            .check-icon {
+              opacity: 1;
+            }
+          }
+        }
+        .checkbox-button {
+          min-width: 18px;
+          min-height: 18px;
+          width: 18px;
+          height: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          border: 1px solid #7a74ba;
+          transition: 0.1s;
+          .check-icon {
+            opacity: 0;
+            transition: 0.1s;
+          }
+        }
+        .coin-info {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          .coin-body {
+            width: 100%;
+            .body-head,
+            .body-bottom {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+            .body-bottom {
+              .card-num,
+              .coin-convert {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 135%;
+                color: #7a74ba;
+              }
+            }
+            .body-head {
+              .coin-name,
+              .coin-convert {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 130%;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .draggable-modal {
+    backdrop-filter: blur(0);
+    display: flex;
+    align-items: end;
+    .draggable-modal-content {
+      width: 100%;
+      height: auto;
+      border-radius: 30px 30px 0 0;
+      background: #181720;
+      padding: 0 16px 24px;
+      .drag-handle-container {
+        background: #181720;
+        margin-bottom: 10px;
+      }
+      &__in {
+        background: #181720;
+        .modal-title {
+          margin-bottom: 12px;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 140%;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

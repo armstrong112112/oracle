@@ -1,0 +1,18 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 24.09.2020 15:11:34
+
+newmtl Eye
+	Ns 33.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.7920 0.7920 0.7920
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\Projetos\Venda de Modelos\Just an eye!\Upload\Eyeball_albedo.jpg
+	map_Kd D:\Projetos\Venda de Modelos\Just an eye!\Upload\Eyeball_albedo.jpg
+	map_d D:\Projetos\Venda de Modelos\Just an eye!\Upload\Eyeball_opacity.jpg
+	map_bump Map__4_Normal_Bump.tga

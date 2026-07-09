@@ -1,0 +1,109 @@
+.seed-code {
+  .main-container {
+    min-height: 100vh;
+    padding-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__head {
+    flex: 1 1 100%;
+    padding-top: 14px;
+  }
+  &__title {
+    margin-bottom: 8px;
+    font-family: 'Hector', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 130%;
+    text-align: center;
+    color: #fff;
+  }
+  &__description {
+    margin-bottom: 38px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: #fff;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 12px;
+    row-gap: 24px;
+    overflow: hidden;
+  }
+  &__item {
+    overflow: hidden;
+  }
+  &__custom {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    background: #181720;
+    border: 1px solid #2b2741;
+    border-radius: 12px;
+    padding: 7px 12px 7px 8px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  &__order {
+    display: block;
+    border: 1px solid #443d69;
+    border-radius: 8px;
+    padding: 2px 6px;
+    background: #1e1d28;
+    min-width: 22px;
+    height: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #000;
+    transition: 0.2s;
+  }
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #fff;
+  }
+  &__checkbox {
+    &:checked + .seed-code__custom {
+      background: #f64e2a;
+      border-color: #f64e2a;
+      .seed-code__order {
+        background: #fff;
+        border-color: #fff;
+      }
+    }
+  }
+  &__button {
+    .new-oracle-button {
+      line-height: 22px;
+      padding: 11px;
+      border: 2px solid #2b2741;
+      border-radius: 14px;
+      color: #fff;
+      &.black {
+        background: #13121b;
+        color: #67639a;
+        cursor: no-drop;
+        &:hover {
+          background: #13121b;
+          box-shadow: none;
+        }
+      }
+      &.yellow {
+        border-color: #f64e2a;
+      }
+    }
+  }
+}

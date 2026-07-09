@@ -1,0 +1,26 @@
+export default {
+  oraclePay: 'Oracle Pay',
+  createApiKeysTitle: 'Создать новую пару API ключей?',
+  createConnection: 'Создать подключение',
+  generateApiKeys: 'Сгенерировать дополнительную пару API ключей',
+  stats: 'Статистика',
+  depositsHistory: 'История депозитов Oracle Pay',
+  tosFees: 'Условия и комиссии Oracle Pay',
+  superShop: 'Супер Магазин',
+  megaStore: 'Мега Магазин',
+  paymentGatewayApiKey: 'API ключ платежного шлюза',
+  oraclePayWidgetApiKey: 'API ключ виджета OraclePay',
+  deleteApiKeysTitle: 'Удалить пару API ключей',
+  deleteKeys: 'Удалить ключи',
+  renameApiKeysTitle: 'Назовите вашу пару API ключей',
+  scheduleReceipts: 'График поступлений',
+  scheduleDeposits: 'График количества депозитов',
+  scheduleAverage: 'График среднего пополнения',
+  changeAverageIncome:
+    'Изменение среднего дохода относительно того же периода прошлого месяца',
+  removeAccessWarning:
+    'Это навсегда удалит доступ для подключенных сервисов. Это действие необратимо',
+  cancel: 'Отмена',
+  apiKeyNamePlaceholder: 'Название пары API ключей',
+  save: 'Сохранить',
+}

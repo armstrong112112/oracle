@@ -1,0 +1,116 @@
+.checkbox-list {
+  margin-bottom: 16px;
+}
+
+.exclude-chats__types-title {
+  padding: 0 8px 8px;
+  user-select: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  color: #fff;
+}
+
+.exclude-chats__types-list {
+  background: #14131b;
+  border-radius: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exclude-chats__types-item {
+  &:last-child {
+    .exclude-chats__types-item--label::after {
+      display: none;
+    }
+  }
+
+  &--selected {
+    .exclude-chats__types-item--label {
+      background-color: var(--color-bg-secondary);
+    }
+  }
+}
+
+.exclude-chats__types-item--label {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 12px 0 16px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &::after {
+    content: '';
+    width: calc(100% - 12px);
+    height: 0;
+    border-bottom: 1px solid #2b2741;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.exclude-chats__types-icon {
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.exclude-chats__chats-avatar {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.exclude-chats__types-label {
+  flex-grow: 1;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  color: #fff;
+}
+
+.exclude-chats__types-check {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #60578e;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+
+  svg {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    path {
+      stroke: var(--primary-1);
+    }
+  }
+}
+
+.form-check:checked + .exclude-chats__types-check {
+  background: var(--primary-2);
+  border-color: var(--primary-2);
+
+  svg {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,193 @@
+.mixing_card {
+  border: 1px solid #2b2741;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.mixing_card_header {
+  padding: 12px 16px;
+}
+.mixing_price {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: white;
+}
+.mixing_equality {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  color: #7a74ba;
+}
+.mixing_from_title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: white;
+}
+.mixing_from_card {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 135%;
+  letter-spacing: 0%;
+  color: #7a74ba;
+}
+.mixing_card_body_row {
+  border-top: 1px solid #2b2741;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.mixing_card_body_row_left {
+  background: #13121b;
+  border-right: 1px solid #2b2741;
+}
+.mixing_card_body_row_left,
+.mixing_card_body_row_right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 135%;
+  letter-spacing: 0%;
+  color: #ffffff;
+}
+.remaining-balance {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 135%;
+  letter-spacing: 0%;
+  color: white;
+}
+
+.escrow_creating_header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+.escrow_creating_header img {
+  width: 20px;
+}
+.escrow_creating_header_title {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: 0;
+  text-align: center;
+  color: white;
+}
+.escrow_overview_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: white;
+}
+.escrow_overview_description {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: white;
+}
+.add_btn {
+  padding: 7px 10px;
+  border-radius: 12px;
+  background: #1e1d28;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 4px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 135%;
+  letter-spacing: 0;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.add_btn.lost {
+  background: #f64e2a;
+}
+.add_btn.resolved {
+  background: #31f62a;
+  color: black;
+}
+
+.escrow_creating_input {
+  background: #1d1d2999;
+  padding: 16px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  outline: none;
+  resize: none;
+  border-radius: 10px;
+  color: white;
+  overflow-y: auto;
+  height: 130px;
+  border: 1px solid #2b2741;
+}
+
+.escrow_creating_input::placeholder {
+  color: #67639a;
+}
+.escrow_overview_description {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: white;
+}
+.refund_card {
+  border: 1px solid #2b2741;
+  gap: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 16px;
+  width: 100%;
+}
+.refund_card_title {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  color: white;
+}
+.refund_card_price {
+  font-family: Hector, Roboto;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 130%;
+  color: white;
+}
+.refund_card_percent {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: 0;
+  color: white;
+  opacity: 0.3;
+}

@@ -1,0 +1,58 @@
+import type { Coin } from '../model/coins'
+
+export const Coins: Coin[] = [
+    {
+      id: 1,
+      icon: '/svg/litecoin-ltc.svg',
+      title: 'Litecoin',
+      value: 'LTC',
+      price: 1000.4,
+      cardNumber: '4342',
+      amount: '0,0244 TON',
+    },
+    {
+      id: 2,
+      icon: '/svg/bitcoin.svg',
+      title: 'XRP',
+      value: 'XRP',
+      price: 1000.4,
+      cardNumber: '4342',
+      amount: '0,0244 TON',
+    },
+    {
+      id: 3,
+      icon: '/svg/bitcoin.svg',
+      title: 'Bitcoin',
+      value: 'BTC',
+      price: 1000.4,
+      cardNumber: '4342',
+      amount: '0,0244 TON',
+    },
+    {
+      id: 4,
+      icon: '/svg/bitcoin.svg',
+      title: 'Etherium',
+      value: 'ETH',
+      price: 1000.4,
+      cardNumber: '4342',
+      amount: '0,0244 TON',
+    },
+    {
+      id: 5,
+      icon: '/svg/tether-usdt.svg',
+      title: 'USDT',
+      value: 'USDT',
+      price: 1000.4,
+      cardNumber: '4342',
+      amount: '0,0244 TON',
+    },
+    {
+      id: 6,
+      icon: '/svg/tether-usdt.svg',
+      title: 'BNB',
+      value: 'BNB',
+      price: 1000.4,
+      cardNumber: '4342',
+      amount: '0,0244 TON',
+    },
+  ]

@@ -1,0 +1,86 @@
+.prepaid-cards {
+  &__list {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    padding: 0 16px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+    .card-item {
+      background: #1e1d28;
+      border-radius: 12px;
+      padding: 8px 12px;
+      &:first-child {
+        .card-img {
+          img {
+            height: 7px;
+          }
+        }
+      }
+      &:nth-child(2) {
+        .card-img {
+          img {
+            height: 11px;
+          }
+        }
+      }
+      &:nth-child(3) {
+        .card-img {
+          img {
+            height: 7px;
+          }
+        }
+      }
+      &:nth-child(4) {
+        .card-img {
+          img {
+            height: 16px;
+          }
+        }
+      }
+      .card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        gap: 8px;
+        white-space: nowrap;
+        .card-name {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 135%;
+          color: #fff;
+        }
+        .wallet-card {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 135%;
+          color: #b2aaf9;
+          span {
+            font-size: 16px;
+            height: 11.5px;
+          }
+        }
+      }
+      .card-img {
+        width: 42px;
+        height: 27px;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        padding: 4px;
+        background: #f64e2a;
+        border-radius: 6px;
+      }
+    }
+  }
+}

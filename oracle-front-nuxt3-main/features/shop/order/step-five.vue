@@ -1,0 +1,563 @@
+<template>
+  <div class="orders-product-page">
+    <div class="orders-product-page__container">
+      <div class="orders-header">
+        <ShopHeaderMobile
+          page-title="Order Details"
+          with-page-title
+          with-chat
+          :with-helpers="profile?.role === 'seller'" />
+      </div>
+      <div v-if="profile?.role === 'seller'" class="orders-overdue">
+        <h2>Awaiting Customer Response</h2>
+        <p>
+          You’ve submitted the work. The buyer must either approve it or request
+          revisions.
+        </p>
+        <ul>
+          <li>You can open a dispute if the customer remains unresponsive.</li>
+          <li>
+            Payment will be released automatically when the escrow timer ends.
+          </li>
+        </ul>
+        <h3>23:32:38 min</h3>
+      </div>
+      <div v-else class="orders-overdue">
+        <h2>Seller Is Late</h2>
+        <p>
+          The overall time limit for this order has expired, and the seller
+          hasn’t marked the order complete.
+        </p>
+        <ul>
+          <li>You can request an update</li>
+          <li>You may open a dispute if the delay is unacceptable.</li>
+        </ul>
+        <h3>23:32:38 min</h3>
+      </div>
+      <div class="container__content">
+        <div v-if="profile?.role === 'seller'" class="table__header">
+          <div class="header-item">
+            <h4>Total Price</h4>
+            <h5 v-if="order?.total_crypto_price">
+              {{ order?.total_crypto_price }} {{ order?.crypto }}
+            </h5>
+            <h5 v-else>{{ order?.total_price }} ₽</h5>
+          </div>
+          <div class="header-item">
+            <h4>Status</h4>
+            <h5>Started</h5>
+          </div>
+        </div>
+        <div v-else class="table__header active">
+          <div class="header-item-profile">
+            <img
+              width="28"
+              height="28"
+              :src="order?.product?.image[0].image"
+              alt="profile" />
+            {{ order?.product?.shopName }}
+            <div class="rating">
+              <span> {{ order?.product?.rating }} /5</span>
+              <img src="/svg/shop/icons/star.svg" alt="profile" />
+            </div>
+          </div>
+          <button class="header-item-chat">
+            <img src="/svg/shop/icons/chat.svg" alt="chat" />
+          </button>
+        </div>
+        <div class="table__body">
+          <div v-if="profile?.role !== 'seller'" class="body-col">
+            <div class="body-item">Status</div>
+            <div class="body-item active">In Progress</div>
+          </div>
+          <div class="body-col">
+            <div class="body-item">Counterparty</div>
+            <div class="body-item">
+              <img :src="profile?.image" alt="profile" />
+              {{ profile?.name }}
+            </div>
+          </div>
+          <div class="body-col">
+            <div class="body-item">Product</div>
+            <div class="body-item">
+              <img :src="order?.product?.image[0].image" alt="cart" />
+              {{ order?.product?.name }}
+            </div>
+          </div>
+          <div v-if="profile?.role !== 'seller'" class="body-col">
+            <div class="body-item">Total Price</div>
+            <div class="body-item" v-if="order?.total_crypto_price">
+              {{ order?.total_crypto_price.toFixed(3) }}
+              {{ order?.crypto }}
+            </div>
+            <div class="body-item" v-else>{{ order?.total_price }} ₽</div>
+          </div>
+          <div class="body-col">
+            <div class="body-item">Paid with</div>
+            <div class="body-item">₽, **2343</div>
+          </div>
+          <div class="body-col">
+            <div class="body-item">Crypto Sent</div>
+            <div class="body-item" v-if="order?.total_crypto_price">
+              {{ order?.total_crypto_price.toFixed(3) }}
+              {{ order?.crypto }}
+            </div>
+            <div class="body-item" v-else>{{ order?.total_price }} ₽</div>
+          </div>
+        </div>
+      </div>
+      <div class="container__files">
+        <h4>Files Update</h4>
+        <h6>May 23, 2025 at 12:23 PM</h6>
+        <div class="files__items">
+          <FilesUpdateProduct
+            v-for="item in files_data"
+            :key="item.id"
+            :date="item.date"
+            :filename="item.filename"
+            :type="profile?.role !== 'seller' ? 'download' : 'edit'" />
+        </div>
+      </div>
+      <div class="container__instructions">
+        <h5>Instruction</h5>
+        <h6>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type
+        </h6>
+      </div>
+      <div v-if="profile?.role === 'seller'" class="container__actions">
+        <button @click="OpenDispute">Open Dispute</button>
+        <button @click="deliver_work_modal">Send Update</button>
+        <button @click="SellerWarn">Complete Order</button>
+      </div>
+      <div v-else class="container__actions">
+        <button @click="OpenDispute">Open Dispute</button>
+        <button @click="OpenWarn">Request Revision</button>
+        <button @click="OpenApprove">Approve Delivery</button>
+      </div>
+    </div>
+    <DeliverModal v-if="deliver_work" @close="close_deliver_work_modal" />
+    <CreateDisputeModal v-if="dispute" @close="CloseDispute" />
+    <WarnModal
+      v-if="approve_modal"
+      title="Approve Delivery"
+      description="If the work meets all your requirements, approve it to release payment to the seller. You can still request revisions if needed."
+      :buttons="approveDeliveryBtn" />
+    <WarnModal
+      v-if="seller_warn_modal"
+      title="Mark Order as Complete"
+      description="Confirm you’ve delivered everything the customer requested. They’ll be notified to review and approve."
+      :buttons="seller_warn_button" />
+    <WarnModal
+      v-if="warn_modal"
+      title="Request Revision"
+      description="Tell the seller what needs to be changed before you can approve the order."
+      :buttons="warn_button" />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useShopsStore } from "@/store/shops";
+import { useShopListingDetailStore } from "@/store/shops/listing/_id";
+import CreateDisputeModal from "~/features/shop/dispute/modal/create-disput.vue";
+import DeliverModal from "~/features/shop/order/modal/deliver.vue";
+import WarnModal from "~/features/shop/order/modal/warn-modal.vue";
+import FilesUpdateProduct from "~/features/shop/shop-settings/__index/files-update-product.vue";
+import { FilesData } from "~/shared/constants/shops";
+import type { FilesDataType } from "~/shared/types/shops";
+
+interface WarnButton {
+  text: string;
+  onClick: () => void;
+}
+
+const shopsStore = useShopsStore();
+const listingStore = useShopListingDetailStore();
+
+const profile = computed(() => shopsStore.profile);
+const order = computed(() => listingStore.PRODUCT);
+
+const warn_modal = ref<boolean>(false);
+const approve_modal = ref<boolean>(false);
+const seller_warn_modal = ref<boolean>(false);
+const dispute = ref<boolean>(false);
+const deliver_work = ref<boolean>(false);
+const files_data = ref<FilesDataType[]>(FilesData);
+
+const warn_button: WarnButton[] = [
+  {
+    text: "Cancel",
+    onClick: () => CloseWarn(),
+  },
+  {
+    text: "Send Revision Request",
+    onClick: () => CloseWarn(),
+  },
+];
+const approveDeliveryBtn: WarnButton[] = [
+  {
+    text: "Cancel",
+    onClick: () => CloseApprove(),
+  },
+  {
+    text: "Request Revision",
+    onClick: () => CloseApprove(),
+  },
+  {
+    text: "Approve & Release Payment",
+    onClick: () => CloseApprove(),
+  },
+];
+const seller_warn_button: WarnButton[] = [
+  {
+    text: "Cancel",
+    onClick: () => SellerWarnClose(),
+  },
+  {
+    text: "Send Revision Request",
+    onClick: () => SellerWarnClose(),
+  },
+];
+
+const OpenWarn = (): void => {
+  warn_modal.value = true;
+};
+
+const CloseWarn = (): void => {
+  warn_modal.value = false;
+};
+
+const SellerWarn = (): void => {
+  seller_warn_modal.value = true;
+};
+
+const SellerWarnClose = (): void => {
+  seller_warn_modal.value = false;
+};
+
+const OpenApprove = (): void => {
+  approve_modal.value = true;
+};
+
+const OpenDispute = (): void => {
+  dispute.value = true;
+};
+
+const CloseDispute = (): void => {
+  dispute.value = false;
+};
+
+const CloseApprove = (): void => {
+  approve_modal.value = false;
+};
+
+const deliver_work_modal = (): void => {
+  deliver_work.value = true;
+};
+
+const close_deliver_work_modal = (): void => {
+  deliver_work.value = false;
+};
+
+onMounted(() => {
+  nextTick(() => {
+    if (import.meta.client) {
+      const actions = document.querySelector(
+        ".container__actions"
+      ) as HTMLElement;
+      if (actions) {
+        const height = actions.offsetHeight;
+        const container = document.querySelector(
+          ".orders-product-page__container"
+        ) as HTMLElement;
+        if (container) {
+          container.style.paddingBottom = `${height + 20}px`;
+        }
+      }
+    }
+  });
+});
+</script>
+
+<style lang="scss" scoped>
+.orders-product-page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+
+  &__container {
+    width: 500px;
+
+    .orders-header {
+      display: none;
+    }
+
+    .order-completed {
+      width: 100%;
+      text-align: center;
+      margin: 12px 0;
+
+      h2 {
+        color: white;
+        font: 400 32px Hector, sans-serif;
+      }
+
+      .order-status {
+        width: 100%;
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        h4 {
+          color: #31f62a;
+          font: 500 14px Hector, sans-serif;
+        }
+      }
+    }
+
+    .container__label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h4 {
+        color: white;
+        font: 400 24px Hector, sans-serif;
+
+        span {
+          color: #bfb7ff;
+        }
+      }
+    }
+
+    .orders-overdue {
+      h2 {
+        color: white;
+        font: 400 24px Hector, sans-serif;
+      }
+
+      p {
+        margin-top: 4px;
+        color: white;
+        font: 400 14px Roboto, sans-serif;
+      }
+
+      ul {
+        margin-top: 12px;
+        padding: 0 10px;
+
+        li {
+          list-style: inside;
+          margin-top: 4px;
+          color: #bfb7ff;
+          font: 400 14px Roboto, sans-serif;
+        }
+      }
+
+      h3 {
+        margin-top: 12px;
+        color: #bfb7ff;
+        font: 400 24px Hector, sans-serif;
+      }
+    }
+
+    .container__content {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid #2b2741;
+      margin-top: 24px;
+      overflow: hidden;
+
+      .table__header {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        border-bottom: 1px solid #2b2741;
+
+        &.active {
+          justify-content: space-between;
+        }
+
+        .header-item {
+          flex: 1;
+
+          h4 {
+            color: #bfb7ff;
+            font: 400 14px Roboto, sans-serif;
+          }
+
+          h5 {
+            margin-top: 4px;
+            color: #fff;
+            font: 400 14px Roboto, sans-serif;
+          }
+
+          &:nth-child(2) {
+            h5 {
+              color: #31f62a;
+            }
+          }
+        }
+
+        .header-item-profile {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: white;
+          font: 500 14px Roboto, sans-serif;
+
+          .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            span {
+              color: white;
+              font: 500 14px Roboto, sans-serif;
+            }
+          }
+        }
+      }
+
+      .table__body {
+        width: 100%;
+
+        .body-col {
+          display: flex;
+          align-items: center;
+
+          .body-item {
+            flex: 1;
+            height: 32px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #2b2741;
+            color: #fff;
+            font: 400 12px Roboto, sans-serif;
+
+            &.active {
+              color: #31f62a;
+            }
+
+            img {
+              width: 20px;
+              height: 20px;
+              object-fit: contain;
+            }
+
+            &:nth-child(1) {
+              border-right: 1px solid #2b2741;
+              background: #14131b;
+            }
+          }
+        }
+      }
+    }
+
+    .container__files {
+      margin-top: 24px;
+
+      h4 {
+        color: white;
+        font: 500 16px Roboto, sans-serif;
+      }
+
+      h6 {
+        color: #bfb7ff;
+        font: 400 12px Roboto, sans-serif;
+      }
+
+      .files__items {
+        margin-top: 8px;
+      }
+    }
+
+    .container__instructions {
+      margin-top: 12px;
+
+      h5 {
+        color: white;
+        font: 600 16px Roboto, sans-serif;
+      }
+
+      h6 {
+        color: white;
+        font: 400 14px Roboto, sans-serif;
+      }
+    }
+
+    .container__actions {
+      width: 100%;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      button {
+        flex: 2;
+        padding: 10px 0;
+        border-radius: 12px;
+        background: #1b1a24;
+        color: white;
+        font: 400 14px Roboto, sans-serif;
+
+        &:nth-child(3) {
+          background: #f64e2a;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .orders-product-page {
+    position: relative;
+    margin-top: 0;
+    overflow-y: auto;
+
+    .orders-product-page__container {
+      width: 100%;
+      height: 100%;
+      padding: 0 16px;
+
+      .orders-header {
+        display: block;
+      }
+
+      .container__label {
+        img {
+          display: none;
+        }
+      }
+
+      .container__files {
+        h6 {
+          display: none;
+        }
+      }
+
+      .container__actions {
+        border-top: 1px solid #2b2741;
+        width: 100%;
+        padding: 12px 16px 24px 16px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        flex-direction: column;
+        background: #0a090f;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+</style>

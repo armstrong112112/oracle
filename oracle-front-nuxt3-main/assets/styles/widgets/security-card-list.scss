@@ -1,0 +1,111 @@
+.additional-security {
+  margin-bottom: 35px;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    .additional-security__card {
+      border-radius: 12px;
+      overflow: hidden;
+      .card-in {
+        padding: 20px 16px;
+      }
+      .card-body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        .left-block {
+          .card-title {
+            margin-bottom: 5px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #fff;
+          }
+          .card-description {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            &__text{
+              width: 70%;
+            }
+            .info-icon {
+              line-height: 0;
+              cursor: pointer;
+              position: relative;
+              &:hover {
+                .info-text {
+                  opacity: 1;
+                  visibility: visible;
+                }
+              }
+              .info-text {
+                display: block;
+                width: 120px;
+                background: #1e1d26;
+                position: absolute;
+                bottom: calc(100% + 10px);
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 3px 5px;
+                border-radius: 5px;
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 9px;
+                line-height: 100%;
+                color: rgba(255, 255, 255, 0.6);
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.2s;
+
+                &::before {
+                  content: '';
+                  width: 0;
+                  height: 0;
+                  border-left: 4px solid transparent;
+                  border-right: 4px solid transparent;
+                  border-top: 8px solid #1e1d26;
+                  position: absolute;
+                  top: 100%;
+                  left: 50%;
+                  transform: translateX(-50%);
+                }
+              }
+            }
+          }
+        }
+        .additional-security__status {
+          .status-active {
+            svg {
+              path {
+                fill: #1b961f;
+              }
+            }
+          }
+        }
+      }
+      .card-text__orange {
+        margin: 18px 0 15px;
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 9px;
+        color: #f64e2a;
+      }
+      button {
+        &.orange {
+          height: 32px;
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

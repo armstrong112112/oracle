@@ -1,0 +1,68 @@
+import type { NotificationListType } from "~/entities/notification/model/types";
+
+export const notificationList: NotificationListType[] = [
+  {
+    image: "/icons/notifications/announcements.svg",
+    title: "announcements",
+    subtitle: "oracleSecurityUpdate",
+    date: "03/22",
+    badgeCount: 0,
+    route: "announcements",
+  },
+  {
+    image: "/icons/notifications/transactions.svg",
+    title: "transactions",
+    subtitle: "btcEthSwapSuccess",
+    date: "03/22",
+    badgeCount: 4,
+    route: "transactions",
+  },
+  {
+    image: "/icons/notifications/assets.svg",
+    title: "assets",
+    subtitle: "usdtDepositSuccess",
+    date: "03/22",
+    badgeCount: 0,
+    route: "assets",
+  },
+  {
+    image: "/icons/notifications/p2p.svg",
+    title: "p2pNotifications",
+    subtitle: "p2pOrderWaiting",
+    date: "03/22",
+    badgeCount: 4,
+    route: "p2p",
+  },
+  {
+    image: "/icons/notifications/escrow.svg",
+    title: "escrowNotifications",
+    subtitle: "fundsLockedEscrow",
+    date: "03/22",
+    badgeCount: 0,
+    route: "escrow",
+  },
+  {
+    image: "/icons/notifications/account.svg",
+    title: "accountAssistant",
+    subtitle: "verificationStatus",
+    date: "03/22",
+    badgeCount: 4,
+    route: "account",
+  },
+  {
+    image: "/icons/notifications/market.svg",
+    title: "whiteListMarket",
+    subtitle: "newReview",
+    date: "03/22",
+    badgeCount: 0,
+    route: "market",
+  },
+  {
+    image: "/icons/notifications/shops.svg",
+    title: "shops",
+    subtitle: "newReview",
+    date: "03/22",
+    badgeCount: 0,
+    route: "shop",
+  },
+];

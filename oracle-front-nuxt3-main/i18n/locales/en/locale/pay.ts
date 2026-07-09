@@ -1,0 +1,26 @@
+export default {
+  oraclePay: 'Oracle Pay',
+  createApiKeysTitle: 'Create new API Keys Pair?',
+  createConnection: 'Create Connection',
+  generateApiKeys: 'Generate additional API KEYS PAIR',
+  stats: 'Stats',
+  depositsHistory: 'Oracle Pay Deposits History',
+  tosFees: 'Oracle Pay TOS & Fees',
+  superShop: 'Super Shop',
+  megaStore: 'Mega Store',
+  paymentGatewayApiKey: 'Payment Gateway API Key',
+  oraclePayWidgetApiKey: 'OraclePay Widget API Key',
+  deleteApiKeysTitle: 'Delete API Keys Pair',
+  deleteKeys: 'Delete Keys',
+  renameApiKeysTitle: 'Name your API Keys Pair',
+  scheduleReceipts: 'Schedule of Receipts',
+  scheduleDeposits: 'Schedule of the number of deposits',
+  scheduleAverage: 'Average replenishment schedule',
+  changeAverageIncome:
+    'Change in average income relative to the same period last month',
+  removeAccessWarning:
+    'This will permanently remove access for connected services. This action cannot be undone',
+  cancel: 'Cancel',
+  apiKeyNamePlaceholder: 'API Keys Pair Name',
+  save: 'Save',
+}

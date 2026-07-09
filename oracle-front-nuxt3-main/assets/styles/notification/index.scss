@@ -1,0 +1,42 @@
+
+.relative {
+  position: relative;
+}
+.notification {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+
+}
+@media (min-width: 1024px) {
+  .notification {
+    max-width: 500px;
+    margin: 20px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+  }
+}
+
+
+.go-back {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.notification-title {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: white !important;
+  text-align: center;
+  font-family: 'Hanson', sans-serif !important;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px !important;
+  font-weight: 700;
+  line-height: normal !important;
+}

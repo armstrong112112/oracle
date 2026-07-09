@@ -1,0 +1,208 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  &-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+
+      &-back {
+          display: flex;
+          gap: 10px;
+          align-items: end;
+          font-family: "Hanson";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 11px;
+          text-transform: uppercase;
+
+          &-arrow {
+              cursor: pointer;
+          }
+      }
+  }
+
+  &-verified-for {
+      &-items {
+          display: flex;
+          flex-wrap: wrap;
+          padding-top: 16px;
+          gap: 8px;
+      }
+
+      &-item {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          font-family: 'Reza Zulmi Alfaizi Sans';
+          font-size: 12px;
+          line-height: 140%;
+          padding: 8px 10px;
+          background: #1D1D29;
+          border-radius: 8px;
+      }
+  }
+
+  &-card {
+      display: flex;
+      gap: 16px;
+
+      &-photo {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          position: relative;
+          width: 79px;
+          height: 79px;
+          background: #121119;
+          border-radius: 100px;
+      }
+
+      &-reviews {
+          display: flex;
+          gap: 4px;
+          font-family: 'Reza Zulmi Alfaizi Sans';
+          font-size: 12px;
+          line-height: 15px;
+
+          .positive {
+              color: #00BD06;
+          }
+
+          .negative {
+              color: #F64E2A;
+          }
+      }
+
+      &-rating {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 6px 7px 6px 6px;
+          gap: 2px;
+          position: absolute;
+          left: calc(50%);
+          transform: translate(-50%, 50%);
+          bottom: 0;
+          background: #363441;
+          border: 3px solid #0A090F;
+          border-radius: 100px;
+          font-family: 'Reza Zulmi Alfaizi Sans';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          flex: none;
+          order: 0;
+          flex-grow: 0;
+
+          .green {
+              color: #00BD06;
+          }
+      }
+
+      &-username {
+          font-family: 'Kenyan Coffee';
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 29px;
+      }
+
+      &-userid {
+          font-family: 'Reza Zulmi Alfaizi Sans';
+          font-size: 14px;
+          line-height: 17px;
+          margin-bottom: 12px;
+      }
+
+      &-since,
+      &-verifed,
+      &-until {
+          display: flex;
+          gap: 10px;
+          font-family: 'Reza Zulmi Alfaizi Sans';
+          font-size: 14px;
+          line-height: 140%;
+          color: rgba(255, 255, 255, 0.4);
+
+          .date {
+              color: #fff;
+              text-decoration: underline;
+          }
+      }
+  }
+
+  &-reviews {
+      &-title {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0px;
+          gap: 8px;
+
+          &-left {
+              display: inline-block;
+
+              &-point {
+                  display: inline-block;
+                  width: 3px;
+                  height: 3px;
+                  background: #FFFFFF;
+                  border-radius: 50%;
+                  margin: 2% 0;
+              }
+
+              &-count {
+                  font-family: 'Reza Zulmi Alfaizi Sans';
+                  font-size: 14px;
+                  line-height: 160%;
+                  color: rgba(255, 255, 255, 0.5);
+              }
+          }
+
+          &-right {
+              font-family: 'Reza Zulmi Alfaizi Sans';
+              font-size: 14px;
+              line-height: 160%;
+              color: rgba(255, 255, 255, 0.5);
+
+              &-score {
+                  font-family: 'Reza Zulmi Alfaizi Sans';
+                  color: #fff;
+              }
+          }
+      }
+  }
+
+  &-contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+
+      &-items {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 13px;
+          width: 100%;
+      }
+
+      &-item {
+          width: 100%;
+      }
+  }
+
+  &-description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+  }
+}

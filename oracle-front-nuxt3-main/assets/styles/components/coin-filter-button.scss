@@ -1,0 +1,204 @@
+.filter-modal {
+  user-select: none;
+}
+.draggable-modal-content {
+  border-radius: 30px 30px 0 0;
+  &__in {
+    min-height: calc(100% - 44px);
+  }
+  .drag-handle-container {
+    margin-bottom: 10px;
+  }
+}
+.modal-title {
+  margin-bottom: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #fff;
+}
+.select-all {
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid #282632;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: #fff;
+  .form-checkbox {
+    padding: 0;
+    input {
+      &:checked + span {
+        background: #f64e2a;
+      }
+    }
+    span {
+      min-width: 18px;
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border-radius: 50%;
+      &::after {
+        width: 10px;
+        height: 10px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 0;
+      }
+    }
+  }
+}
+.crypto-list {
+  .list-item {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    .crypto-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #282632;
+      padding: 11px 16px;
+      cursor: pointer;
+      .form-control {
+        margin-right: 4px;
+        .form-checkbox {
+          padding: 0;
+          input {
+            &:checked + span {
+              background: #f64e2a;
+            }
+          }
+          span {
+            min-width: 18px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+
+            &::after {
+              width: 10px;
+              height: 10px;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              line-height: 0;
+            }
+          }
+        }
+      }
+      .right-block {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        .icon {
+          img {
+            width: 28px;
+            height: 28px;
+          }
+        }
+        .coin-body {
+          width: 100%;
+          .body-head,
+          .body-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .crypto-name,
+            .crypto-amound {
+              font-family: 'Roboto', sans-serif;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 120%;
+              color: #fff;
+            }
+            .crypto-card,
+            .crypto-price {
+              font-family: 'Roboto', sans-serif;
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 135%;
+              color: #7a74ba;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.coin-selected__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1d1c25;
+  border-radius: 12px;
+  padding: 12px 16px 12px 12px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120%;
+  color: #fff;
+  .selected-coin {
+    max-width: calc(100% - 20px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+    gap: 5px;
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+  }
+  .arrow-icon {
+    transform: rotate(-90deg);
+    svg {
+      path {
+        stroke: #fff;
+      }
+    }
+  }
+}
+
+.form-input {
+  .crypto-selection {
+    display: none;
+    &:checked + .checkbox-button {
+      background: #f64e2a;
+      border-color: #f64e2a;
+      .check-icon {
+        opacity: 1;
+      }
+    }
+  }
+  .checkbox-button {
+    min-width: 18px;
+    min-height: 18px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #7a74ba;
+    transition: 0.1s;
+    .check-icon {
+      line-height: 0;
+      opacity: 0;
+      transition: 0.1s;
+    }
+  }
+}
+.close-modal-btn {
+  margin-top: 20px;
+}

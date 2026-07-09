@@ -1,0 +1,374 @@
+.internal-transfer__step-three {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+  @media (min-width: 1024px) {
+    padding-bottom: 0;
+    
+  }
+  .internal-transfer__content {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+    @media (min-width: 1024px) {
+      margin-bottom: 0;
+    }
+    .internal-transfer__head {
+      margin-bottom: 48px;
+      .head-list {
+        display: flex;
+        gap: 6px;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        padding: 0 10px;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+          height: 0;
+        }
+        .list-item {
+          border-radius: 12px;
+          padding: 10px 14px 10px 10px;
+          background: #13121b;
+          .icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 10px;
+            background: #f64e2a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #fff;
+          }
+          .list-description {
+            white-space: nowrap;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 135%;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .internal-transfer__from {
+      margin-bottom: 24px;
+      .from-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #2b2741;
+        border-radius: 16px;
+        padding: 12px 0px;
+        margin-bottom: 10px;
+        .card-title {
+          margin-bottom: 4px;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 130%;
+          color: #fff;
+        }
+        .user-account {
+          margin-bottom: 30px;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 135%;
+          color: #7a74ba;
+        }
+        .coin-img {
+          margin-bottom: 16px;
+          svg {
+            width: 46px;
+            height: 46px;
+          }
+        }
+        .coin-convert__amount {
+          margin-bottom: 4px;
+          font-family: 'Hector', sans-serif;
+          font-weight: 400;
+          font-size: 40px;
+          line-height: 125%;
+          color: #fff;
+        }
+        .coin-to__usd {
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 140%;
+          color: rgba(255, 255, 255, 0.3);
+        }
+      }
+      .input {
+        input {
+          height: 40px;
+          border-radius: 12px;
+          padding: 4px 12px;
+          font-size: 14px;
+          line-height: 130%;
+          &::placeholder {
+            font-size: 14px;
+            line-height: 130%;
+          }
+        }
+      }
+    }
+    .transaction-summary {
+      padding: 0 10px;
+      max-width: 375px;
+      margin: 0 auto;
+      width: 100%;
+      border-radius: 24px 16px 0 0;
+      padding: 16px 16px 24px;
+      background: #1b1b25;
+      
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @media (min-width: 1024px) {
+        position: static;
+        left: 0;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+        padding: 0 ;
+        margin: 0;
+        background: none;
+      }
+      &__fees,
+      &__price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+      &__price {
+        margin-bottom: 24px;
+      }
+      &__label {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        text-align: center;
+        color: #7a74ba;
+      }
+      &__amount {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+  .transaction-confirmed__modal {
+    padding: 0 16px;
+    .modal-content {
+      height: auto;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #181720;
+      border-radius: 24px;
+      padding: 24px 26px;
+      overflow: hidden;
+      .modal-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 32px;
+        .check-icon {
+          margin-bottom: 16px;
+        }
+        .modal-title {
+          margin-bottom: 28px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 140%;
+          color: #fff;
+        }
+        .border-bottom {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          position: relative;
+          &::before,
+          &::after {
+            content: '';
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #000;
+            position: absolute;
+            top: 50%;
+            left: -40px;
+            transform: translateY(-50%);
+          }
+          &::after {
+            left: auto;
+            right: -40px;
+          }
+        }
+      }
+      .user-info {
+        margin-bottom: 50px;
+        &__list {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          .list-item {
+            &:nth-child(2) {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+            &:nth-child(3) {
+              .info-bottom {
+                justify-content: start;
+                gap: 8px;
+              }
+            }
+            .info-head {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .date,
+              .time,
+              .to,
+              .amount {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 135%;
+                color: #7a74ba;
+              }
+            }
+            .info-bottom {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              .date,
+              .time,
+              .user-name,
+              .transfer-to__usd {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 130%;
+                color: #fff;
+              }
+              .amount-coin {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 140%;
+                color: #fff;
+              }
+            }
+            .user-img {
+              width: 36px;
+              height: 36px;
+              border-radius: 50%;
+              overflow: hidden;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+      .transaction-summary {
+        &__fees,
+        &__price {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 8px;
+        }
+        &__price {
+          margin-bottom: 0;
+        }
+        &__label {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 130%;
+          text-align: center;
+          color: #7a74ba;
+        }
+        &__amount {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 130%;
+          text-align: center;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .payment-error-modal {
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .payment-error__head {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        height: calc(100% - 250px);
+        .modal-title {
+          margin: 12px 0 38px;
+          font-family: 'Hector', sans-serif;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 130%;
+          text-align: center;
+          color: #fff;
+        }
+        .modal-description {
+          max-width: 237px;
+          margin: 0 auto;
+          margin-bottom: 24px;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140%;
+          text-align: center;
+          color: #fff;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .modal-buttons {
+        .button_oracle {
+          margin-bottom: 10px;
+          border-radius: 14px;
+          box-shadow: none;
+          &.gray {
+            border-color: #1f1e27;
+            box-shadow: none;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

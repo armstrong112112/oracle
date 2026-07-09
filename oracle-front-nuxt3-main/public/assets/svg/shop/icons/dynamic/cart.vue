@@ -1,0 +1,35 @@
+<template>
+  <div>
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 20.5C11 21.3284 10.3284 22 9.5 22C8.67157 22 8 21.3284 8 20.5C8 19.6716 8.67157 19 9.5 19C10.3284 19 11 19.6716 11 20.5Z"
+        :stroke="color"
+      />
+      <path
+        d="M19 20.5C19 21.3284 18.3284 22 17.5 22C16.6716 22 16 21.3284 16 20.5C16 19.6716 16.6716 19 17.5 19C18.3284 19 19 19.6716 19 20.5Z"
+        :stroke="color"
+      />
+      <path
+        d="M5.8 4.86667H17.2C19.2987 4.86667 21 6.53814 21 8.6V13.2667C21 15.3285 19.2987 17 17.2 17H9.6C7.50132 17 5.8 15.3285 5.8 13.2667V4.86667ZM5.8 4.86667C5.8 3.83574 4.94934 3 3.9 3H2M5.8 8.6H20.525"
+        :stroke="color"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+</template>
+<script setup lang="ts">
+interface Props {
+  color: string
+}
+
+defineProps<Props>()
+</script>
+<style lang="scss"></style>

@@ -1,0 +1,54 @@
+.telegram-auth {
+  .main-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 24px 16px;
+  }
+  &__content {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0 120px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+    svg {
+      width: 64px;
+      height: 64px;
+    }
+  }
+  &-title {
+    margin-bottom: 32px;
+    font-family: 'Hector', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    text-align: center;
+    color: #fff;
+  }
+  &-description {
+    margin-bottom: 48px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 135%;
+    text-align: center;
+    color: #fff;
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .new-oracle-button {
+      line-height: 22px;
+      padding: 11px;
+    }
+  }
+}

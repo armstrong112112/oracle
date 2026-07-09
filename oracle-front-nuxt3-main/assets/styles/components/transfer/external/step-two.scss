@@ -1,0 +1,431 @@
+.external-transfer__step-two {
+  padding-bottom: 130px;
+  .save-btn {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    background: #1e1d28;
+    border-radius: 12px;
+    padding: 7px 10px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 135%;
+    color: #fff;
+    transition: 0.3s;
+    &:hover {
+      background: #343243;
+    }
+  }
+  .external-transfer__content {
+    .from-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #2b2741;
+      border-radius: 16px;
+      padding: 12px 0px 60px;
+      margin-top: 24px;
+      margin-bottom: 150px;
+      .card-title {
+        margin-bottom: 4px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: #fff;
+      }
+      .card-promocode {
+        margin-bottom: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: #7a74ba;
+      }
+      .coin-img {
+        margin-bottom: 16px;
+        svg {
+          width: 46px;
+          height: 46px;
+        }
+      }
+      .coin-amount {
+        margin-bottom: 4px;
+        font-family: 'Hector', sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 125%;
+        color: #fff;
+      }
+      .coin-to__usd {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 140%;
+        color: rgba(255, 255, 255, 0.3);
+      }
+    }
+    .address-selected {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      .left-block {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        .coin-img {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .address-info {
+          .coin-name {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 130%;
+            color: #67639a;
+          }
+          .address-code {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 130%;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .transaction-summary {
+      padding: 0 10px;
+      max-width: 375px;
+      margin: 0 auto;
+      width: 100%;
+      border-radius: 24px 16px 0 0;
+      padding: 16px 16px 24px;
+      background: #13121b;
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &__fees,
+      &__price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+      &__price {
+        margin-bottom: 24px;
+      }
+      &__label {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        text-align: center;
+        color: #7a74ba;
+      }
+      &__amount {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        text-align: center;
+        color: #fff;
+      }
+      .button_oracle {
+        box-shadow: none;
+      }
+    }
+  }
+  .transaction-confirmed__modal {
+    padding: 50px 16px;
+    overflow-y: auto;
+    .modal-content {
+      height: auto;
+      padding: 24px 26px;
+      background: #181720;
+      border-radius: 24px;
+      overflow: hidden;
+      .modal-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 32px;
+        .check-icon {
+          margin-bottom: 16px;
+        }
+        .modal-title {
+          margin-bottom: 28px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 140%;
+          color: #fff;
+        }
+        .border-bottom {
+          width: 100%;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          &::before,
+          &::after {
+            content: '';
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #000;
+            position: absolute;
+            top: 50%;
+            left: -40px;
+            transform: translateY(-50%);
+          }
+          &::after {
+            left: auto;
+            right: -40px;
+          }
+        }
+      }
+      .user-info {
+        margin-bottom: 30px;
+        &__list {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          .list-item {
+            &:nth-child(2) {
+              .info-head {
+                margin-bottom: 4px;
+              }
+              .info-bottom {
+                justify-content: start;
+                gap: 4px;
+              }
+            }
+            &:nth-child(3) {
+              .info-bottom {
+                margin-top: -12px;
+                align-items: end;
+                gap: 8px;
+              }
+            }
+            &:nth-child(4),
+            &:nth-child(5) {
+              .info-bottom {
+                justify-content: start;
+                gap: 5px;
+              }
+            }
+            .info-head {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .date,
+              .time,
+              .to,
+              .amount,
+              .sent-to {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 135%;
+                color: #7a74ba;
+              }
+            }
+            .info-bottom {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              .date,
+              .time,
+              .user-name,
+              .transfer-to__usd,
+              .coin-promocode {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 130%;
+                color: #fff;
+              }
+              .amount-coin {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 140%;
+                color: #fff;
+              }
+              .copy-btn {
+                cursor: pointer;
+                svg {
+                  width: 20px;
+                  height: 20px;
+                  path {
+                    fill: #7a74ba;
+                  }
+                }
+              }
+            }
+            .user-img {
+              width: 36px;
+              height: 36px;
+              border-radius: 50%;
+              overflow: hidden;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+      .transaction-summary {
+        &__fees,
+        &__price {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 8px;
+        }
+        &__price {
+          margin-bottom: 0;
+        }
+        &__label {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 130%;
+          text-align: center;
+          color: #7a74ba;
+        }
+        &__amount {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 130%;
+          text-align: center;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .payment-error-modal {
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .payment-error__head {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        height: calc(100% - 250px);
+        .modal-title {
+          margin: 12px 0 38px;
+          font-family: 'Hector', sans-serif;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 130%;
+          text-align: center;
+          color: #fff;
+        }
+        .modal-description {
+          max-width: 250px;
+          margin: 0 auto;
+          margin-bottom: 24px;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140%;
+          text-align: center;
+          color: #fff;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      .modal-buttons {
+        .button_oracle {
+          margin-bottom: 10px;
+          border-radius: 14px;
+          box-shadow: none;
+          &.gray {
+            border-color: #1f1e27;
+            box-shadow: none;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  .save-modal {
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .save-modal__head {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        flex: 1 1 100%;
+        padding-bottom: 150px;
+        .modal-title {
+          margin: 0 0 12px;
+          font-family: 'Hector', sans-serif;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 130%;
+          text-align: center;
+          color: #fff;
+        }
+        .modal-description {
+          margin-bottom: 40px;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140%;
+          text-align: center;
+          color: #fff;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        .input {
+          width: 100%;
+          input {
+            width: 100%;
+          }
+        }
+      }
+      .modal-buttons {
+        .button_oracle {
+          margin-bottom: 10px;
+          border-radius: 14px;
+          box-shadow: none;
+          &.gray {
+            border-color: #1f1e27;
+            box-shadow: none;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

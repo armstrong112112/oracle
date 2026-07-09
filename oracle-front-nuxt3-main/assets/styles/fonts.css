@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "Hanson";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Hanson-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Evolventa";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/evolventa/Evolventa-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Reza Zulmi Alfaizi Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/RezaZulmiSans.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Druk Text Wide Cyr";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/DrukCyr-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Kenyan Coffee";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/kenyan coffee rg.ttf") format("truetype");
+}
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/roboto/Roboto-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/roboto/Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/roboto/Roboto-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/roboto/Roboto-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/inter/Inter-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/inter/Inter-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/inter/Inter-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: Hector;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/hector-regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url("/fonts/Nunito-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-display: optional;
+  src: url("/fonts/Nunito-SemiBold.ttf") format("truetype");
+}
+
+.font-roboto {
+  font-family: Roboto, sans-serif;
+}

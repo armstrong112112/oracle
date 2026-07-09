@@ -1,0 +1,47 @@
+# _TZ
+_TZ
+reports
+
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Test/coverage artifacts
+coverage
+.playwright
+cypress/screenshots
+cypress/videos
+cypress/downloads
+*.tsbuildinfo
+
+# Editor/OS files
+.vscode
+.history
+.idea
+.fleet
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Secrets/certificates
+*.pem
+*.key
+*.crt
+*.pfx

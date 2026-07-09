@@ -1,0 +1,101 @@
+.verification-textarea {
+  background: #1d1d2999;
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  min-height: 110px;
+  outline: none;
+  border: none;
+  resize: none;
+  border-radius: 10px;
+  color: white;
+}
+.verification-textarea::placeholder {
+  color: #67639A;
+}
+.tracking {
+  margin-top: 20px;
+}
+.max-length {
+  font-family: Roboto , sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 135%;
+  letter-spacing: 0;
+  color: white;
+}
+
+.tracking_info_col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.tracking_information {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tracking_info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.tracking_info_title {
+  font-family: Kenyan Coffee , sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: white;
+}
+.tracking_info_date {
+  font-family: Kenyan Coffee , sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: white;
+  opacity: 0.3;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.tracking_info_title {
+  font-family: "Kenyan Coffee", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: white;
+  flex-shrink: 0; /* Prevents the label from shrinking */
+}
+
+.tracking_info_text {
+  font-family: "Reza Zulmi Alfaizi Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: white;
+  flex-shrink: 0; /* Prevents text from shrinking */
+}
+
+.dots {
+  flex-grow: 1;
+  border-bottom: 1px dashed white; /* Creates the dotted line */
+  height: 1px;
+  margin: 0 4px;
+  opacity: 0.6;
+}

@@ -1,0 +1,217 @@
+.checks-main {
+  max-width: 375px;
+  margin: 0 auto;
+  min-height: calc(100vh - 85px);
+  padding: 0 16px 24px;
+  .home-block {
+    margin-bottom: 24px;
+  }
+
+  .input {
+    margin-bottom: 18px;
+  }
+  @media (min-width: 1024px) {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  &__content {
+    @media (min-width: 1024px) {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .coin-selected__btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1d1c25;
+      border-radius: 12px;
+      padding: 12px 16px 12px 12px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 120%;
+      color: #fff;
+      .selected-coin {
+        max-width: calc(100% - 20px);
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        align-items: center;
+        text-overflow: ellipsis;
+        gap: 5px;
+        &::-webkit-scrollbar {
+          height: 0;
+        }
+      }
+      .arrow-icon {
+        transform: rotate(-90deg);
+        svg {
+          path {
+            stroke: #fff;
+          }
+        }
+      }
+    }
+    .checks-filter {
+      .filter-head {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 20px;
+        @media (min-width: 1024px) {
+          .coin-filter-wrapper {
+            flex: 1 1 40%;
+            .coin-selected__btn {
+              margin-bottom: 0 !important;
+            }
+          }
+          .filter-buttons {
+            justify-content: flex-start !important;
+            gap: 24px;
+            border-bottom: 1px solid #272630;
+          }
+        }
+        .filter-buttons {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .filter-btn {
+            position: relative;
+            padding-bottom: 6px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 135%;
+            color: #fff;
+            &.active {
+              &::after {
+                width: 46px;
+              }
+            }
+            &::after {
+              content: '';
+              border-radius: 10px;
+              width: 0;
+              height: 2px;
+              background: #f64e2a;
+              position: absolute;
+              left: 50%;
+              bottom: 0;
+              transform: translateX(-50%);
+              transition: 0.3s;
+            }
+          }
+        }
+        .dropdown {
+          position: relative;
+          .arrow-sort__btn {
+            cursor: pointer;
+          }
+          .dropdown-menu {
+            min-width: 100px;
+            border-radius: 5px;
+            position: absolute;
+            top: calc(100% + 15px);
+            right: 0;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            &.show {
+              opacity: 1;
+              visibility: visible;
+              top: calc(100% + 5px);
+            }
+            .dropdown-item {
+              .sort-btn {
+                width: 100%;
+                padding: 5px 10px;
+                background: #13121b;
+                white-space: nowrap;
+                cursor: pointer;
+                font-family: 'Inter', sans-serif;
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 140%;
+                text-align: left;
+                color: #fff;
+                transition: 0.2s;
+                &.active {
+                  background: #2b2741;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .filter-modal {
+    @media (max-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+    }
+    .draggable-modal-content {
+      width: 100%;
+      height: auto;
+      &__in {
+        min-height: auto;
+      }
+    }
+  }
+
+  // Стили для заголовка на ПК
+  .checks-header-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 0 16px;
+
+    .checks-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 120%;
+      color: #fff;
+      margin: 0;
+    }
+  }
+
+  // Круглая кнопка создания чека
+  .create-check-circle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #F64E2A;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background: #e54524;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+      filter: brightness(0) invert(1);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+
+[build]
+  command = "cross-env SASS_SILENCE_DEPRECATIONS=* yarn run generate"
+  publish = "dist"
+
+[[redirects]]
+from = "/*"
+to="/index.html"
+status = 200
+

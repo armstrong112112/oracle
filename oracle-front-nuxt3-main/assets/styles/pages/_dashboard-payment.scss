@@ -1,0 +1,387 @@
+.payment-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 14px 0 90px;
+
+  .block-head {
+    margin-bottom: 8px;
+    .block-title {
+      font-family: "Hector", sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      text-transform: capitalize;
+      color: #fff;
+    }
+  }
+
+  .wallet-overview {
+    .wallet-balance {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+
+      .left-block {
+        .balance-title {
+          font-family: "Roboto", sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 130%;
+          color: #fff;
+        }
+
+        .wallet-balance__info {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .coin-icon {
+            height: 100%;
+
+            span {
+              font-family: "Hector", sans-serif;
+              font-weight: 400;
+              font-size: 32px;
+              line-height: 125%;
+              color: #fff;
+            }
+          }
+
+          .wallet-balance__value {
+            font-family: "Hector", sans-serif;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 125%;
+            color: #fff;
+          }
+
+          .wallet-select__wrapper {
+            display: flex;
+            align-items: center;
+
+            .wallet-select {
+              background: transparent;
+              border: none;
+              outline: none;
+              box-shadow: none;
+              background: none;
+              cursor: pointer;
+              font-family: "Roboto", sans-serif;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 130%;
+              color: #fff;
+
+              &:checked {
+                outline: none;
+                border: none;
+              }
+
+              option {
+                background: #000;
+              }
+            }
+          }
+        }
+      }
+
+      .wallet-history {
+        .history-link {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          border-radius: 12px;
+          padding: 7px 10px;
+          font-family: "Roboto", sans-serif;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 135%;
+          color: #b2aaf9;
+          transition: 0.3s;
+
+          &:hover {
+            color: #fff;
+
+            svg {
+              path {
+                stroke: #fff;
+              }
+            }
+          }
+
+          svg {
+            width: 7px;
+
+            path {
+              stroke: #b2aaf9;
+              transition: 0.3s;
+            }
+          }
+        }
+      }
+    }
+
+    .wallet-actions {
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      margin-bottom: 16px;
+      padding: 0 16px;
+      display: flex;
+      gap: 8px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        height: 0;
+      }
+
+      .wallet-action {
+        &__btn {
+          width: 100%;
+          display: flex;
+          gap: 10px;
+          // border: 1px solid #2b2741;
+          border-radius: 12px;
+          padding: 12px 14px 8px 12px;
+          cursor: pointer;
+          .coin-icon {
+            min-width: 24px;
+            min-height: 24px;
+            width: 24px;
+            height: 24px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .wallet-action__body {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 8px;
+
+            .left-block {
+              .coin-info {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+
+                .coin-name {
+                  font-family: "Roboto", sans-serif;
+                  font-weight: 500;
+                  font-size: 12px;
+                  line-height: 135%;
+                  color: #fff;
+                }
+
+                .coin-status__icon {
+                  margin-left: 3px;
+                  line-height: 0;
+
+                  &.negative {
+                    svg {
+                      transform: rotate(180deg);
+
+                      path {
+                        fill: #f64e2a;
+                      }
+                    }
+                  }
+                }
+
+                .coin-change {
+                  font-family: "Inter", sans-serif;
+                  font-weight: 500;
+                  font-size: 10px;
+                  line-height: 130%;
+
+                  &.positive {
+                    color: #31f62a;
+                  }
+
+                  &.negative {
+                    color: #f64e2a;
+                  }
+                }
+              }
+            }
+
+            .right-block {
+              .coin-amount {
+                font-family: "Roboto", sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 135%;
+                color: #fff;
+              }
+
+              .coin-price {
+                font-family: "Roboto", sans-serif;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 135%;
+                text-align: left;
+                color: #7a74ba;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .wallet-action-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+
+      .new-oracle-button {
+        padding: 9px 0;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .recent-transactions {
+    &__cards {
+      display: flex;
+      gap: 8px;
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      padding: 0 16px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        height: 0;
+      }
+    }
+  }
+
+  .send-to {
+    .block-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      .send-user__search {
+        max-width: 49px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 12px;
+        border: 1px solid #2b2741;
+        border-radius: 8px;
+        border-color: transparent;
+        transition: 0.3s;
+        &:focus-within {
+          max-width: 210px;
+          border-color: #2b2741;
+          .form-input {
+            width: 100%;
+          }
+        }
+        .form-input {
+          width: 100%;
+          background: transparent;
+          border: 0;
+          font-family: "Nunito", sans-serif;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 120%;
+          color: #fff;
+          transition: 0.3s;
+          &:focus {
+            outline: none;
+          }
+          &::placeholder {
+            font-family: "Nunito", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 120%;
+            color: #7a74ba;
+          }
+        }
+        .search-btn {
+          cursor: pointer;
+          svg {
+            path {
+              stroke: #fff;
+            }
+          }
+        }
+      }
+    }
+    .send-users {
+      display: flex;
+      gap: 12px;
+      overflow: auto;
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      padding: 0 10px;
+      &::-webkit-scrollbar {
+        height: 0;
+      }
+    }
+  }
+
+  .dashboard-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    &__item {
+      &.escrow,
+      &.mixing {
+        .sections-body {
+          .sections-btn {
+            span {
+              display: block;
+              width: calc(100% - 68px);
+              text-align: center;
+            }
+          }
+        }
+      }
+      .block-head {
+        padding: 4px 0;
+        .head-link {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+      }
+      .sections-body {
+        display: flex;
+        gap: 12px;
+        .sections-btn {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border-radius: 12px;
+          padding: 10px;
+          background: #13121b;
+          font-family: "Roboto", sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 130%;
+          color: #fff;
+          .icon {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: #262530;
+            line-height: 0;
+          }
+        }
+      }
+    }
+  }
+}

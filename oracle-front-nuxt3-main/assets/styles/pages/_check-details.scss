@@ -1,0 +1,389 @@
+.check-details {
+  max-width: 375px;
+  margin: 0 auto;
+  min-height: calc(100vh);
+  padding: 0 16px 80px;
+  @media (min-width: 1024px) {
+    max-width: 100%;
+    padding: 0;
+    min-height: auto;
+  }
+  .block-nav-back {
+    margin-bottom: 24px;
+  }
+  .qr-code {
+    max-width: 266px;
+    width: 100%;
+    margin: 0 auto;
+    background: #121119;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .input {
+    margin-bottom: 30px;
+    input {
+      padding-right: 82px;
+      text-overflow: ellipsis;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      color: #fff;
+    }
+    &-copy-action,
+    &-share-action {
+      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      background: #1e1d28;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      right: 44px;
+    }
+    &-share-action {
+      right: 4px;
+    }
+  }
+  .button_oracle {
+    margin-bottom: 24px;
+  }
+  .total-ammount {
+    margin-bottom: 24px;
+    &__title {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 135%;
+      color: #7a74ba;
+    }
+    .ammount-coin {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 140%;
+      color: #fff;
+      .coin-covert {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: #fff;
+      }
+    }
+    .activation-details {
+      .activation-labels {
+        display: flex;
+        font-family: 'Inter', sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 130%;
+        color: #fff;
+        .label {
+          flex: 1 1 50%;
+        }
+      }
+      .activation-values {
+        display: flex;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 130%;
+        color: #fff;
+        .remaining-count,
+        .per-activation {
+          flex: 1 1 50%;
+          span {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 140%;
+          }
+        }
+      }
+    }
+  }
+  &__info {
+    .check-details__accordion {
+      .accordion-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        padding-bottom: 16px;
+        cursor: pointer;
+        &.active {
+          .arrown-icon {
+            transform: rotate(90deg);
+          }
+        }
+        span {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 140%;
+          color: #fff;
+        }
+        .arrown-icon {
+          width: 14px;
+          height: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: rotate(270deg);
+          transition: 0.3s;
+          img {
+            height: 12px;
+          }
+        }
+      }
+      .accordion-enter-active,
+      .accordion-leave-active {
+        transition: max-height 0.3s ease-out, opacity 0.3s ease;
+      }
+      .accordion-enter-from,
+      .accordion-leave-to {
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease;
+      }
+
+      .accordion-enter-to,
+      .accordion-leave-from {
+        max-height: 300px;
+        opacity: 1;
+      }
+      .accordion-body {
+        width: calc(100% + 32px);
+        margin-left: -16px;
+        overflow: hidden;
+        transition: 0.3s;
+        .body-list {
+          .list-item {
+            border-bottom: 1px solid #2b2741;
+            padding: 8px 16px;
+            &__head {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 14px;
+              .list-num {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 140%;
+                color: #fff;
+              }
+              .user-img {
+                border-radius: 50%;
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                min-height: 32px;
+                overflow: hidden;
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+              .user-name {
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 130%;
+                color: #fff;
+              }
+              .coin-amound {
+                white-space: nowrap;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 130%;
+                text-align: right;
+                color: #fff;
+              }
+              .coin-convert {
+                white-space: nowrap;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 135%;
+                text-align: right;
+                color: #b2aaf9;
+              }
+            }
+            .create-date {
+              padding-left: 24px;
+              font-family: 'Roboto', sans-serif;
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 135%;
+              color: #7a74ba;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__bottom {
+    width: 100%;
+    background: #000;
+    padding: 12px 20px 24px 20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    @media (min-width: 1024px) {
+      position: static;
+      background: none;
+      padding: 0;
+      padding-top: 24px;
+    }
+    .new-oracle-button {
+      max-width: 343px;
+      margin: 0 auto;
+      border-radius: 14px;
+      padding: 11px 16px;
+      line-height: 22px;
+    }
+  }
+
+  .checks-status {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px 0;
+    width: 100%;
+    height: 100vh;
+    background: #0a090f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    &::before {
+      background: #f64e2a;
+      border-radius: 100%;
+      content: '';
+      filter: blur(125px);
+      height: 100px;
+      left: 50%;
+      position: absolute;
+      top: -50px;
+      transform: translateX(-50%);
+      width: 100px;
+      z-index: 0;
+    }
+    &-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .activations {
+      margin-bottom: 12px;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 14px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .checks-status-title {
+      max-width: 290px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 160%;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+    }
+    .checks-img {
+      width: 270px;
+      height: 270px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+    .exchange {
+      margin-bottom: 25px;
+      &-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        .cripto-name {
+          font-family: var(--font3);
+          font-weight: 400;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.4);
+        }
+        .cripto-description {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 11px;
+          color: rgba(255, 255, 255, 0.4);
+        }
+      }
+      .exchange-value {
+        margin-bottom: 12px;
+        font-family: var(--font3);
+        font-weight: 700;
+        font-size: 30px;
+        text-align: center;
+        color: #1b961f;
+      }
+      .criptio-sum {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        .sum-value {
+          font-family: var(--font3);
+          font-weight: 400;
+          font-size: 18px;
+          color: #fff;
+          &:nth-child(1) {
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+    .button_oracle {
+      max-width: 287px;
+      margin: 0 auto;
+    }
+  }
+}
+
+
+.check-details__bottom {
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    .shareable-input-wrapper {
+      flex-basis: 60%;
+      max-width: 100%;
+    };
+    .new-oracle-button {
+      flex-basis: 40%;
+      max-width: 100%;
+    };
+  }
+}

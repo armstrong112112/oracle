@@ -1,0 +1,164 @@
+.dropdown-select {
+  position: relative;
+  width: 100%;
+}
+
+/* Контейнер выпадающего списка */
+.dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  max-height: 200px;
+  overflow-y: scroll;
+
+  padding: 12px 0 12px 12px;
+  background: #13121b;
+
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+
+  transition: height 0.3s ease;
+
+  scrollbar-width: thin;
+  scrollbar-color: #67639a #13121b;
+}
+
+.dropdown-container.height-closed {
+  height: 0;
+  padding: 0 0 0 12px;
+}
+
+.dropdown-container.height-open {
+  height: 200px;
+}
+
+/* Кастомный скролл */
+.dropdown-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-container::-webkit-scrollbar-track {
+  background: #13121b;
+}
+
+.dropdown-container::-webkit-scrollbar-thumb {
+  background: #67639a;
+  border-radius: 3px;
+}
+
+/* Элемент списка */
+.dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+
+  padding: 12px 0;
+  border-radius: 12px;
+
+  background: #13121b;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #1a1824;
+}
+
+/* Контент внутри элемента */
+.dropdown-item-content {
+  display: flex;
+  gap: 8px;
+}
+
+.dropdown-item-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.dropdown-item-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-item-title {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  color: white;
+}
+
+.dropdown-item-subtitle {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 135%;
+  color: #b2aaf9;
+}
+
+.new-creating-card-header-description {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 135%;
+  color: #b2aaf9;
+}
+
+/* Стрелка (иконка раскрытия) */
+.new-creating-card-header-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.new-creating-card-header {
+  position: relative;
+  width: 95%;
+  padding: 12px 0 12px 12px;
+}
+
+.new-creating-card-header-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-creating-card-header-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.new-creating-card-header-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.new-creating-card-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-creating-card-header-title {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
+  color: white;
+}
+
+.new-creating-card-header-description {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
