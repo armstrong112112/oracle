@@ -56,8 +56,9 @@ const openModal = () => {
   modalContentInRef.value.style.opacity = '1'
   modalRef.value.style.backgroundColor = `rgba(0, 0, 0, 0.8)`
   modalContentRef.value.style.transform = `translateY(0%)`
+  const gap = window.innerWidth - document.documentElement.clientWidth
   document.body.style.overflow = 'hidden'
-  document.body.style.paddingRight = '15px'
+  document.body.style.paddingRight = gap > 0 ? `${gap}px` : ''
 }
 
 const closeModal = () => {

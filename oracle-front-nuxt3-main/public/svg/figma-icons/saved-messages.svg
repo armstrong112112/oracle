@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<g id="System components">
+<g id="Icons">
+<g id="Saved Messages">
+<rect width="24" height="24" rx="6" fill="#0044FF" />
+<path id="Shape" fill-rule="evenodd" clip-rule="evenodd" d="M12.5729 14.9084C12.2522 14.6371 11.7826 14.6364 11.4612 14.9068L7.41696 18.3083C6.8562 18.7799 6 18.3812 6 17.6485V6.22414C6 5.27192 6.77192 4.5 7.72414 4.5H16.2759C17.2281 4.5 18 5.27192 18 6.22414V17.6415C18 18.3754 17.1414 18.7736 16.5811 18.2996L12.5729 14.9084Z" fill="white" />
+</g>
+</g>
+</g>
+</svg>

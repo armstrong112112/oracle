@@ -1,0 +1,250 @@
+.media-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+}
+
+.media-stage__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  opacity: 0;
+  transition: opacity 0.32s ease;
+  pointer-events: none;
+
+  &.is-on {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.media-stage.is-full .media-stage__scrim {
+  background: #000;
+}
+
+.media-stage__frame {
+  position: fixed;
+  z-index: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #000;
+  pointer-events: auto;
+
+  &.is-live {
+    transition:
+      top 0.42s cubic-bezier(0.22, 0.9, 0.28, 1),
+      left 0.42s cubic-bezier(0.22, 0.9, 0.28, 1),
+      width 0.42s cubic-bezier(0.22, 0.9, 0.28, 1),
+      height 0.42s cubic-bezier(0.22, 0.9, 0.28, 1),
+      border-radius 0.42s ease;
+  }
+
+  &.is-full {
+    border-radius: 0;
+  }
+}
+
+.media-stage__sheet {
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 16px;
+  pointer-events: none;
+  transition:
+    top 0.42s cubic-bezier(0.22, 0.9, 0.28, 1),
+    left 0.42s cubic-bezier(0.22, 0.9, 0.28, 1),
+    width 0.42s cubic-bezier(0.22, 0.9, 0.28, 1),
+    height 0.42s cubic-bezier(0.22, 0.9, 0.28, 1),
+    border-radius 0.42s ease;
+}
+
+.media-stage.is-full .media-stage__sheet {
+  border-radius: 0;
+}
+
+.media-stage__bar,
+.media-stage__foot,
+.media-stage__menu,
+.media-stage__icon,
+.media-stage__expand,
+.media-stage__action,
+.media-stage__item {
+  pointer-events: auto;
+}
+
+.media-stage__bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 50px;
+  padding: 0 8px 0 12px;
+  background: #000;
+}
+
+.media-stage__icon,
+.media-stage__expand,
+.media-stage__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.media-stage__icon img {
+  display: block;
+}
+
+.media-stage__icon:first-child img {
+  transform: rotate(180deg);
+}
+
+.media-stage__count {
+  flex: 1;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  color: #fff;
+}
+
+.media-stage__tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  min-width: 32px;
+}
+
+.media-stage__expand {
+  width: 32px;
+  height: 32px;
+}
+
+.media-stage__menu {
+  position: absolute;
+  top: 54px;
+  right: 12px;
+  z-index: 3;
+  width: 175px;
+  border-radius: 12px;
+  background: rgba(20, 19, 27, 0.8);
+  backdrop-filter: blur(30px);
+  overflow: hidden;
+}
+
+.media-stage__read {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  margin: 0;
+  padding: 0 10px;
+  border-bottom: 3px solid #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  line-height: 1.3;
+  color: #fff;
+
+  img {
+    display: block;
+    flex: 0 0 auto;
+  }
+}
+
+.media-stage__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+
+  img {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  &.is-danger {
+    color: var(--primary-2);
+
+    img {
+      filter: brightness(0) saturate(100%) invert(37%) sepia(93%) saturate(2463%) hue-rotate(349deg) brightness(101%);
+    }
+  }
+
+  &.is-last {
+    border-bottom: 0;
+    border-top: 3px solid #000;
+  }
+}
+
+.media-stage__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 12px 24px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.media-stage.is-video .media-stage__foot {
+  background: #000;
+}
+
+.media-stage__caption {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.media-stage__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.media-stage__action {
+  width: 32px;
+  height: 32px;
+}
+
+.media-stage__who {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  p:first-child {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  p:last-child {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

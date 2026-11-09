@@ -101,7 +101,7 @@
         </div>
         <!-- <nuxt-link
           class="notification-title pages_href_title"
-          :to="localePath('/chat-settings')">
+          :to="localePath('/chat/settings')">
           Chat Settings ✅
         </nuxt-link> -->
         <nuxt-link class="notification-title pages_href_title" :to="localePath('/dashboard/payment')">

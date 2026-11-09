@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<g id="System components">
+<g id="Icons">
+<g id="Auto-added frame" clip-path="url(#clip0_0_1)">
+<g id="Icon">
+<rect id="Rectangle" width="24" height="24" rx="5.17241" fill="#A954DC" />
+<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M11.1425 17.2H12.5075V6.8H11.1425V17.2ZM9.7775 18.5H13.8725V5.5H9.7775V18.5ZM6.365 17.2H7.73V9.4H6.365V17.2ZM5 18.5H9.095V8.1H5V18.5ZM15.92 17.2H17.285V13.3H15.92V17.2ZM14.555 18.5H18.65V12H14.555V18.5Z" fill="white" />
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="24" height="24" fill="white" />
+</clipPath>
+</defs>
+</svg>

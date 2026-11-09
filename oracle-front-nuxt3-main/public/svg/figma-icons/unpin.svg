@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+<g id="System components">
+<g id="Icons">
+<g id="UnPin">
+<g id="icon">
+<path id="Vector" d="M8.50574 11.1581H11.8831C12.3159 11.1581 12.5443 10.6454 12.2547 10.3236L10.4341 8.3007C10.3515 8.20888 10.3057 8.08973 10.3057 7.96621V6.34995C10.3057 6.22643 10.3515 6.10728 10.4341 6.01547L12.2547 3.99256C12.5443 3.6708 12.3159 3.15808 11.8831 3.15808H5.12842C4.69553 3.15808 4.46719 3.6708 4.75677 3.99256L6.57738 6.01547C6.66002 6.10728 6.70574 6.22643 6.70574 6.34995V7.96621C6.70574 8.08973 6.66002 8.20888 6.57738 8.3007L4.75677 10.3236C4.46719 10.6454 4.69553 11.1581 5.12842 11.1581H8.50574ZM8.50574 11.1581V15.1581" stroke="white" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
+<path id="Vector_2" d="M3 2.55023L14 11.5832" stroke="#1B1A24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<path id="Vector_3" d="M3 2.75214L14 11.5832" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+</g>
+</g>
+</g>
+</g>
+</svg>

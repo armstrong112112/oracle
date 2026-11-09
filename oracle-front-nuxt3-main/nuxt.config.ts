@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     { src: "~/plugins/swiper.ts", mode: "client" },
     { src: "~/plugins/apexcharts.client.ts", mode: "client" },
     { src: "~/plugins/gsap.client.ts", mode: "client" },
+    { src: "~/plugins/vue-advanced-chat.client.ts", mode: "client" },
   ],
 
   components: true,
@@ -60,9 +61,33 @@ export default defineNuxtConfig({
     },
   },
 
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag: string) =>
+        tag === "vue-advanced-chat" || tag === "emoji-picker",
+    },
+  },
+
   vite: {
     plugins: [svgLoader()],
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag: string) =>
+            tag === "vue-advanced-chat" || tag === "emoji-picker",
+        },
+      },
+    },
   },
+
+  routeRules: Object.fromEntries(
+    ["", "/ru", "/en"].flatMap((prefix) =>
+      ["/chat"].flatMap((path) => [
+        [`${prefix}${path}`, { ssr: false }],
+        [`${prefix}${path}/**`, { ssr: false }],
+      ]),
+    ),
+  ),
 
   hooks: {
     "pages:extend"(pages) {

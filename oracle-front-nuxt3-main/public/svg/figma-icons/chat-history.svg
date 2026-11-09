@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<g id="System components">
+<g id="Icons">
+<g id="Chat History">
+<rect id="Rectangle" width="24" height="24" rx="6" fill="#00C61A" />
+<g id="icon">
+<path id="Vector" d="M6.94724 16.3661L5.68408 19.6818L11.5788 16.7345L7.36829 13.7871C6.94724 14.1555 7.28408 15.4818 6.94724 16.3661Z" fill="white" />
+<path id="Ellipse" d="M20 10.8397C20 14.7929 16.4183 17.9976 12 17.9976C11.5702 17.9976 11.1483 17.9673 10.7368 17.9089C9.89261 17.7891 9.09235 17.5511 8.35789 17.2145C5.77071 16.0288 4 13.6193 4 10.8397C4 6.88652 7.58172 3.68182 12 3.68182C16.4183 3.68182 20 6.88652 20 10.8397Z" fill="white" />
+</g>
+</g>
+</g>
+</g>
+</svg>

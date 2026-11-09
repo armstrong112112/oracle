@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<g id="System components">
+<g id="Icons">
+<g id="Catalogue">
+<rect width="24" height="24" rx="6" fill="#00C61A" />
+<g id="icon">
+<path id="Vector" d="M15.6704 5.7944C16.7384 5.79444 17.6038 6.66007 17.604 7.728V16.9702C17.604 18.0383 16.7385 18.9037 15.6704 18.9038H9.45557C8.38763 18.9035 7.52197 18.0382 7.52197 16.9702V7.728C7.52222 6.66021 8.38778 5.79466 9.45557 5.7944H15.6704Z" fill="white" stroke="white" />
+<g id="Container" clip-path="url(#clip0_0_1)">
+<path id="Vector_2" d="M9.379 11.142H15.7251M9.379 8.91124H15.7251M9.379 13.3728H15.7251M9.379 15.6035H15.7251M4.15394 15.4319H6.48084M4.15381 17.1479H6.48084M4.15394 13.716H6.48084M4.15394 10.284H6.48084M4.15394 12H6.48084M4.15394 8.56805H6.48084M4.23066 6.85208H6.48084" stroke="#30C75D" stroke-width="1.2" stroke-linecap="round" />
+</g>
+<g id="Container_2" clip-path="url(#clip1_0_1)">
+<path id="Vector_3" d="M10.0595 11.5526H14.5018M10.0595 9.4812H14.5018M10.0595 13.624H14.5018M10.0595 15.6955H14.5018M6.40195 15.5361H8.03078M6.40186 17.1295H8.03078M6.40195 13.9427H8.03078M6.40195 10.7559H8.03078M6.40195 12.3493H8.03078M6.40195 9.16252H8.03078M6.45565 7.56912H8.03078" stroke="white" stroke-width="1.2" stroke-linecap="round" />
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="9.31532" height="13.0414" fill="white" transform="translate(8.146 5.47931)" />
+</clipPath>
+<clipPath id="clip1_0_1">
+<rect width="4.65766" height="12.1098" fill="white" transform="translate(4.53882 6.2944)" />
+</clipPath>
+</defs>
+</svg>

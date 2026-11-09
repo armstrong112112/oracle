@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+<g id="System components">
+<g id="Icons">
+<g id="Important Platforms Catalogue">
+<rect width="48" height="48" rx="24" fill="#1B1A24" />
+<g id="icon">
+<path id="Vector" d="M17.2498 15.3345C17.2498 13.8492 18.4538 12.6451 19.9391 12.6451H27.4094H31.5928C33.078 12.6451 34.2821 13.8492 34.2821 15.3345V22.6554V32.6656C34.2821 34.1509 33.078 35.3549 31.5928 35.3549H19.9391C18.4538 35.3549 17.2498 34.1509 17.2498 32.6656V15.3345Z" fill="white" stroke="white" />
+<g id="Container" clip-path="url(#clip0_0_1)">
+<path id="Vector_2" d="M21.0712 22.506H29.4019M21.0712 18.6214H29.4019M21.0712 26.3905H29.4019M21.0712 30.2751H29.4019M14.2122 29.9763H17.2668M14.212 32.9644H17.2668M14.2122 26.9882H17.2668M14.2122 21.0119H17.2668M14.2122 24H17.2668M14.2122 18.0238H17.2668M14.3129 15.0356H17.2668" stroke="#1B1A24" stroke-width="2" stroke-linecap="round" />
+</g>
+<g id="Container_2" clip-path="url(#clip1_0_1)">
+<path id="Vector_3" d="M21.3881 22.6753H29.6914M21.3881 18.2469H29.6914M21.3881 27.1037H29.6914M21.3881 31.5321H29.6914M14.5517 31.1914H17.5962M14.5515 34.5979H17.5962M14.5517 27.785H17.5962M14.5517 20.972H17.5962M14.5517 24.3785H17.5962M14.5517 17.5656H17.5962M14.6521 14.1591H17.5962" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="12.2283" height="22.7098" fill="white" transform="translate(19.4528 12.6451)" />
+</clipPath>
+<clipPath id="clip1_0_1">
+<rect width="8.73453" height="22.7098" fill="white" transform="translate(10.7178 12.6451)" />
+</clipPath>
+</defs>
+</svg>

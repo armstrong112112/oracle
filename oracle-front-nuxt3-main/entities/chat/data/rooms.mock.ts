@@ -1,0 +1,307 @@
+import { ChatKind, ChatRole } from "~/entities/chat/model";
+import { CURRENT_USER_ID } from "~/entities/chat/lib/to-vac";
+import type { ChatRoomExtra, VacRoom, VacRoomUser } from "~/entities/chat/model";
+
+const me: VacRoomUser = {
+  _id: CURRENT_USER_ID,
+  username: "Julia Work",
+  avatar: "/png/zaglushka.png",
+  status: { state: "online", lastChanged: "today, 12:40" },
+};
+
+const anna: VacRoomUser = {
+  _id: "u2",
+  username: "Anna Cole",
+  avatar: "/png/user.png",
+  status: { state: "online", lastChanged: "today, 12:38" },
+};
+
+const max: VacRoomUser = {
+  _id: "u3",
+  username: "Max Reed",
+  avatar: "/avatars/barbara.png",
+  status: { state: "offline", lastChanged: "yesterday, 21:10" },
+};
+
+const lina: VacRoomUser = {
+  _id: "u4",
+  username: "Lina Park",
+  avatar: "/avatars/user.svg",
+  status: { state: "online", lastChanged: "today, 11:02" },
+};
+
+const servicePreview =
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+
+const otto: VacRoomUser = {
+  _id: "u5",
+  username: "Otto Kim",
+  avatar: "/svg/avatar.svg",
+  status: { state: "offline", lastChanged: "today, 09:14" },
+};
+
+export const MOCK_ROOMS: VacRoom[] = [
+  {
+    roomId: "dm-anna",
+    roomName: "Anna Cole",
+    avatar: anna.avatar,
+    unreadCount: 3,
+    index: 8,
+    users: [me, anna],
+    lastMessage: {
+      content: "Check the mosaic below",
+      senderId: "u2",
+      username: anna.username,
+      timestamp: "12:41",
+      new: true,
+      seen: false,
+      distributed: true,
+      saved: true,
+    },
+  },
+  {
+    roomId: "dm-max",
+    roomName: "Max Reed",
+    avatar: max.avatar,
+    index: 7,
+    users: [me, max],
+    lastMessage: {
+      content: "Muted this chat for the evening",
+      senderId: CURRENT_USER_ID,
+      timestamp: "11:20",
+      seen: true,
+      distributed: true,
+      saved: true,
+    },
+  },
+  {
+    roomId: "group-oracle",
+    roomName: "Oracle Core",
+    avatar: "/png/recent-oracle.png",
+    index: 6,
+    users: [me, anna, lina, otto],
+    lastMessage: {
+      content: "Standup notes are in the file",
+      senderId: "u4",
+      username: lina.username,
+      timestamp: "10:05",
+      seen: true,
+      distributed: true,
+      saved: true,
+    },
+  },
+  {
+    roomId: "group-dev",
+    roomName: "Frontend desk",
+    avatar: "/png/home-1.png",
+    index: 5,
+    users: [me, max, lina],
+    lastMessage: {
+      content: "I pushed the layout tweak",
+      senderId: CURRENT_USER_ID,
+      timestamp: "09:48",
+      seen: true,
+      distributed: true,
+      saved: true,
+    },
+  },
+  {
+    roomId: "channel-news",
+    roomName: "Oracle News",
+    avatar: "/png/new-features.png",
+    index: 4,
+    users: [me, otto, anna],
+    lastMessage: {
+      content: "Release notes for 2.4",
+      senderId: CURRENT_USER_ID,
+      timestamp: "09:02",
+      seen: true,
+      distributed: true,
+      saved: true,
+    },
+  },
+  {
+    roomId: "channel-market",
+    roomName: "Market pulse",
+    avatar: "/png/bitcoin.png",
+    index: 3,
+    users: [me, max],
+    lastMessage: {
+      content: "BTC opened higher",
+      senderId: "u3",
+      username: max.username,
+      timestamp: "08:40",
+      seen: true,
+      distributed: true,
+      saved: true,
+    },
+  },
+  {
+    roomId: "saved",
+    roomName: "Saved Messages",
+    avatar: "/svg/figma-icons/saved-messages-48.svg",
+    unreadCount: 1,
+    index: 40,
+    users: [me],
+    lastMessage: {
+      content: servicePreview,
+      senderId: "system",
+      timestamp: "12:32",
+      seen: false,
+      distributed: false,
+      saved: false,
+    },
+  },
+  {
+    roomId: "sys-catalogue",
+    roomName: "Service Catalogue",
+    avatar: "/svg/figma-icons/service-catalogue.svg",
+    unreadCount: 1,
+    index: 39,
+    users: [me],
+    lastMessage: {
+      content: servicePreview,
+      senderId: "system",
+      timestamp: "12:32",
+      seen: false,
+      distributed: false,
+      saved: false,
+    },
+  },
+  {
+    roomId: "sys-platforms",
+    roomName: "Important Platforms Catalogue",
+    avatar: "/svg/figma-icons/important-platforms-catalogue.svg",
+    index: 38,
+    users: [me],
+    lastMessage: {
+      content: "Okay, dude. I’ll call u in 30 min",
+      senderId: CURRENT_USER_ID,
+      timestamp: "12:32",
+      seen: true,
+      distributed: true,
+      saved: true,
+    },
+  },
+  {
+    roomId: "sys-urgent",
+    roomName: "Urgently check your service notifications",
+    avatar: "/svg/figma-icons/urgently-check-notifications.svg",
+    index: 37,
+    users: [me],
+    lastMessage: {
+      content: "Video",
+      senderId: CURRENT_USER_ID,
+      timestamp: "12:32",
+      seen: true,
+      distributed: true,
+      saved: true,
+    },
+  },
+  {
+    roomId: "dm-support",
+    roomName: "Support",
+    avatar: "/png/pay-account-bg.png",
+    unreadCount: 1,
+    index: 1,
+    users: [me, otto],
+    lastMessage: {
+      content: "We received your ticket",
+      senderId: "u5",
+      username: otto.username,
+      timestamp: "07:55",
+      new: true,
+      seen: false,
+      distributed: true,
+      saved: true,
+    },
+  },
+];
+
+export const MOCK_ROOM_EXTRAS: Record<string, ChatRoomExtra> = {
+  "dm-anna": {
+    roomId: "dm-anna",
+    kind: ChatKind.Dm,
+    role: ChatRole.Member,
+    folderIds: ["all", "personal"],
+    muted: false,
+  },
+  "dm-max": {
+    roomId: "dm-max",
+    kind: ChatKind.Dm,
+    role: ChatRole.Member,
+    folderIds: ["all", "personal"],
+    muted: true,
+    autodelete: true,
+  },
+  "group-oracle": {
+    roomId: "group-oracle",
+    kind: ChatKind.Group,
+    role: ChatRole.Admin,
+    folderIds: ["all", "work"],
+    muted: false,
+    paid: true,
+  },
+  "group-dev": {
+    roomId: "group-dev",
+    kind: ChatKind.Group,
+    role: ChatRole.Member,
+    folderIds: ["all", "work"],
+    muted: false,
+  },
+  "channel-news": {
+    roomId: "channel-news",
+    kind: ChatKind.Channel,
+    role: ChatRole.Owner,
+    folderIds: ["all", "work"],
+    muted: false,
+  },
+  "channel-market": {
+    roomId: "channel-market",
+    kind: ChatKind.Channel,
+    role: ChatRole.Subscriber,
+    folderIds: ["all"],
+    muted: false,
+    premium: true,
+  },
+  saved: {
+    roomId: "saved",
+    kind: ChatKind.Dm,
+    role: ChatRole.Owner,
+    folderIds: ["all"],
+    muted: false,
+    important: true,
+    importantSticky: true,
+  },
+  "sys-catalogue": {
+    roomId: "sys-catalogue",
+    kind: ChatKind.Dm,
+    role: ChatRole.Owner,
+    folderIds: ["all"],
+    muted: false,
+    important: true,
+  },
+  "sys-platforms": {
+    roomId: "sys-platforms",
+    kind: ChatKind.Dm,
+    role: ChatRole.Owner,
+    folderIds: ["all"],
+    muted: false,
+    important: true,
+  },
+  "sys-urgent": {
+    roomId: "sys-urgent",
+    kind: ChatKind.Dm,
+    role: ChatRole.Owner,
+    folderIds: ["all"],
+    muted: false,
+    important: true,
+  },
+  "dm-support": {
+    roomId: "dm-support",
+    kind: ChatKind.Dm,
+    role: ChatRole.Member,
+    folderIds: ["all", "china"],
+    muted: false,
+  },
+};

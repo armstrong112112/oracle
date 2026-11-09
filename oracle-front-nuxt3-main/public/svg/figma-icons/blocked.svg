@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<g id="System components">
+<g id="Icons">
+<g id="Blocked">
+<rect width="24" height="24" rx="6" fill="#F64E2A" />
+<g id="Group 718">
+<path id="Ellipse 1248" d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12ZM5.54301 12C5.54301 15.5661 8.4339 18.457 12 18.457C15.5661 18.457 18.457 15.5661 18.457 12C18.457 8.4339 15.5661 5.54301 12 5.54301C8.4339 5.54301 5.54301 8.4339 5.54301 12Z" fill="white" />
+<rect id="Rectangle 34624186" x="16.6196" y="6.55475" width="1.77778" height="14.0755" transform="rotate(45 16.6196 6.55475)" fill="white" />
+</g>
+</g>
+</g>
+</g>
+</svg>
