@@ -94,6 +94,8 @@ export default defineNuxtConfig({
       const publicRoutes = [
         "/",
         "/landing",
+        // временно убираем логин для страниц чата(для проверки/сверки макета)
+        "/chat",
         "/auth",
         "/auth/sign-in",
         "/auth/sign-in-with-telegram",
