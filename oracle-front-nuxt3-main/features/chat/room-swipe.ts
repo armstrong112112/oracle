@@ -201,14 +201,6 @@ export const bindRoomSwipe = (host: HTMLElement, api: RoomSwipeApi): (() => void
 
   const ensure = (item: HTMLElement): void => {
     unwrap(item);
-    if (isSystemRoom(item)) {
-      item.classList.remove("is-swipeable", "is-dragging");
-      item.querySelectorAll(".oracle-swipe--pin, .oracle-swipe--right").forEach((node) => node.remove());
-      if (offsetOf(item) !== 0) {
-        setOffset(item, 0);
-      }
-      return;
-    }
     const list = item.closest(".vac-room-list");
     if (!(list instanceof HTMLElement)) {
       return;
@@ -219,6 +211,17 @@ export const bindRoomSwipe = (host: HTMLElement, api: RoomSwipeApi): (() => void
       const itemStyle = getComputedStyle(item);
       item.dataset.swipePadLeft = String(parseFloat(itemStyle.paddingLeft) || 0);
       item.dataset.swipePadRight = String(parseFloat(itemStyle.paddingRight) || 0);
+    }
+
+    if (isSystemRoom(item)) {
+      item.classList.remove("is-swipeable", "is-dragging");
+      item.style.paddingLeft = `${Number(item.dataset.swipePadLeft) + left}px`;
+      item.style.paddingRight = `${Number(item.dataset.swipePadRight) + right}px`;
+      item.querySelectorAll(".oracle-swipe--pin, .oracle-swipe--right").forEach((node) => node.remove());
+      if (offsetOf(item) !== 0) {
+        setOffset(item, 0);
+      }
+      return;
     }
 
     item.classList.add("is-swipeable");

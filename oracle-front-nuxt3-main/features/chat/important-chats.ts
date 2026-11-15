@@ -86,7 +86,6 @@ const ROOM_CSS = `
       box-sizing: border-box;
       min-height: 71px;
       margin-bottom: 5px;
-      padding: 0 14px;
       border-radius: 8px;
     }
     @media (max-width: 768px) {
