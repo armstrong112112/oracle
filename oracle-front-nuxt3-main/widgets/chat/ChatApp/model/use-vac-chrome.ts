@@ -8,6 +8,24 @@ const THREAD_HEADER_HEIGHT = 54;
 const MIN_SCROLL_LIFT = 80;
 const SCROLL_LIFT_ID = "oracle-scroll-lift";
 const SCROLL_LIFT_CSS = `.vac-col-messages .vac-icon-scroll{bottom:var(--oracle-scroll-lift,${MIN_SCROLL_LIFT}px)!important}`;
+const ROOMS_LAYOUT_ID = "oracle-rooms-layout";
+const ROOMS_LAYOUT_CSS = `
+  .vac-rooms-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .vac-room-list {
+    flex: 1 1 auto;
+    height: 0;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+`;
 
 const px = (value: number): string => `${value}px`;
 
@@ -69,6 +87,7 @@ export const useVacChrome = (vacEl: Ref<HTMLElement | null>, composing: Ref<bool
     }
 
     ensureShadowStyle(root, SCROLL_LIFT_ID, SCROLL_LIFT_CSS);
+    ensureShadowStyle(root, ROOMS_LAYOUT_ID, ROOMS_LAYOUT_CSS);
     const lift = withHeader ? Math.max(composerHeight.value + 16, MIN_SCROLL_LIFT) : MIN_SCROLL_LIFT;
     el.style.setProperty("--oracle-scroll-lift", px(lift));
   };

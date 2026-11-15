@@ -84,32 +84,20 @@ const ROOM_CSS = `
     .oracle-important-toggle.is-open img { transform: rotate(180deg); }
     ${selectRooms(IMPORTANT_ROOM_IDS)} {
       box-sizing: border-box;
-      height: 71px;
       min-height: 71px;
-      margin-bottom: 0;
-      padding: 0;
-      border-radius: 0;
-      overflow: hidden;
+      margin-bottom: 5px;
+      padding: 0 14px;
+      border-radius: 8px;
     }
     @media (max-width: 768px) {
       ${selectRooms(IMPORTANT_ROOM_IDS)} {
-        height: 60px;
         min-height: 60px;
       }
     }
-    ${selectRooms(IMPORTANT_ROOM_IDS, " .vac-room-container")} { gap: 12px; }
-    ${selectRooms(IMPORTANT_ROOM_IDS, " .vac-avatar")} {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
-      min-height: 48px;
-      margin-right: 0;
-      background-color: transparent;
-    }
     ${selectRooms(IMPORTANT_ROOM_IDS, " .vac-name-container")} {
       min-width: 0;
-      border-bottom: 1px solid #2b2741;
-      padding: 8px 12px 8px 0;
+      border-bottom: 0;
+      padding: 0;
     }
     ${selectRooms(IMPORTANT_ROOM_IDS, " .vac-room-name")} {
       font-size: 14px;
@@ -131,18 +119,6 @@ const ROOM_CSS = `
       line-height: 1.35;
     }
     ${selectRooms(IMPORTANT_ROOM_IDS, " .vac-format-message-wrapper")} { color: #bfb7ff; }
-    ${selectRooms(IMPORTANT_ROOM_IDS, " .vac-room-badge")} {
-      width: 24px;
-      height: 24px;
-      min-width: 24px;
-      padding: 0;
-      border-radius: 12px;
-      background: var(--primary-2);
-      color: var(--primary-3);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.3;
-    }
     .oracle-viewed-wrap { display: flex; margin-right: 4px; }
     .oracle-viewed { display: block; width: 16px; height: 16px; }
     .oracle-video {
@@ -218,14 +194,6 @@ const markVideo = (item: HTMLElement): void => {
 const decorate = (item: HTMLElement): void => {
   if (!ROOM_IDS.has(item.id)) {
     return;
-  }
-
-  item.style.paddingLeft = "0";
-  item.style.paddingRight = "0";
-  const card = item.querySelector<HTMLElement>(".vac-room-container");
-  if (card) {
-    card.style.paddingLeft = "8px";
-    card.style.paddingRight = "0px";
   }
 
   markViewed(item);
