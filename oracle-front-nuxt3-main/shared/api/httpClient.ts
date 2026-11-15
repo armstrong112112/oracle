@@ -49,7 +49,10 @@ export function createApiClient({
   refreshUrl = "/auth/refresh",
   redirectUrl = "/auth/sign-in",
 }: CreateApiClientOptions) {
-  const requestFetcher = fetcher ?? ((import.meta.server ? useRequestFetch() : $fetch) as ApiFetcher);
+  const requestFetcher: ApiFetcher = fetcher ?? (<T = unknown>(request: string, opts?: FetcherOptions) => {
+    const active = import.meta.server ? useRequestFetch() : $fetch;
+    return active<T>(request, opts);
+  });
   const interceptors = getApiInterceptors({
     accessToken,
     refreshToken,
